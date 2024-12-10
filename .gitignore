@@ -1,0 +1,38 @@
+# General
+node_modules/
+dist/
+.env
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+
+# Backend
+backend/venv/
+backend/__pycache__/
+backend/.env
+
+# pnpm
+pnpm-debug.log
+
+# OS-specific
+Thumbs.db
+*.swp
+
+# Python-specific
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+
+# Logs and temporary files
+logs/
+*.pid
+*.seed
+*.sqlite
