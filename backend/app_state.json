@@ -3,11 +3,19 @@
     {
       "address": "rPvnCGU7cX5xiyUJfmkac71y6c8s8E9ZBL",
       "seed": "sEdVGhK4cEo4uLBAsc44nLZcuuQMp3X"
+    },
+    {
+      "address": "rD5AE1JW2LfVBhHEwuJQyK9xuL4fyrkWF6",
+      "seed": "sEdT9iy7ntsEiYB4DWpEYYNbCNQKLFB"
+    },
+    {
+      "address": "rgaHLhNCGHrNW5Xu16zYfbSXir8D7Wx8h",
+      "seed": "sEd7YrUSyFXArgTwFmrffGV9NQt5ZQP"
     }
   ],
   "tokens": [],
   "current_wallet": {
-    "address": "rPvnCGU7cX5xiyUJfmkac71y6c8s8E9ZBL",
-    "seed": "sEdVGhK4cEo4uLBAsc44nLZcuuQMp3X"
+    "address": "rgaHLhNCGHrNW5Xu16zYfbSXir8D7Wx8h",
+    "seed": "sEd7YrUSyFXArgTwFmrffGV9NQt5ZQP"
   }
 }

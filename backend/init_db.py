@@ -4,5 +4,6 @@ if __name__ == "__main__":
     app = create_app()
     with app.app_context():
         from models import db
+
         db.create_all()
-        print("Database initialized successfully!") 
+        print("Database initialized successfully!")
