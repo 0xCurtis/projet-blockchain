@@ -36,3 +36,5 @@ logs/
 *.pid
 *.seed
 *.sqlite
+*.db
+*.json
