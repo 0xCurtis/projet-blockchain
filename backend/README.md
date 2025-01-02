@@ -168,19 +168,7 @@ backend/
 3. Implement business logic in `services/`
 4. Add tests in `tests/`
 5. Update documentation
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push to the branch
-5. Create a Pull Request
-
+   
 ## License
 
 [MIT License](LICENSE)
-
-## Support
-
-For support, please open an issue in the GitHub repository. 
