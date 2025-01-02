@@ -1,55 +1,67 @@
-import os
-import sys
 import pytest
-import tempfile
+from flask import Flask
+from backend.models import db
+from backend.routes.token_routes import token_blueprint
+from backend.routes.trade_routes import trade_blueprint
 
-# Add the backend directory to the Python path
-backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, backend_dir)
 
-from app import create_app
-from models import db
-
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def app():
-    """Create and configure a new app instance for each test session."""
-    # Create a temporary file to isolate the database for each test
-    db_fd, db_path = tempfile.mkstemp()
-    
-    app = create_app()
-    app.config.update({
-        'TESTING': True,
-        'SQLALCHEMY_DATABASE_URI': f'sqlite:///{db_path}',
-        'SQLALCHEMY_TRACK_MODIFICATIONS': False,
-        'WTF_CSRF_ENABLED': False
-    })
+    """Create and configure a test Flask application"""
+    app = Flask(__name__)
+    app.config.update(
+        {
+            "TESTING": True,
+            "SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:",
+            "SQLALCHEMY_TRACK_MODIFICATIONS": False,
+            "WTF_CSRF_ENABLED": False,
+        }
+    )
 
-    # Create the database and the database tables
-    with app.app_context():
-        db.create_all()
-        yield app
-        db.session.remove()
-        db.drop_all()
+    # Initialize extensions
+    db.init_app(app)
 
-    # Close and remove the temporary database
-    os.close(db_fd)
-    os.unlink(db_path)
+    # Register blueprints
+    app.register_blueprint(token_blueprint, url_prefix="/api/tokens")
+    app.register_blueprint(trade_blueprint, url_prefix="/api/trades")
 
-@pytest.fixture
-def client(app):
-    """A test client for the app."""
-    return app.test_client()
+    return app
 
-@pytest.fixture
-def runner(app):
-    """A test runner for the app's Click commands."""
-    return app.test_cli_runner()
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def _db(app):
-    """Create and configure a new database for each test."""
+    """Create database tables for testing"""
     with app.app_context():
         db.create_all()
         yield db
         db.session.remove()
         db.drop_all()
+
+
+@pytest.fixture(scope="function")
+def session(_db):
+    """Create a new database session for testing"""
+    connection = _db.engine.connect()
+    transaction = connection.begin()
+
+    session = _db._make_scoped_session(options={"bind": connection, "binds": {}})
+
+    _db.session = session
+
+    yield session
+
+    transaction.rollback()
+    connection.close()
+    session.remove()
+
+
+@pytest.fixture
+def client(app, _db):
+    """Create a test client"""
+    return app.test_client()
+
+
+@pytest.fixture
+def runner(app):
+    """Create a test CLI runner"""
+    return app.test_cli_runner()
