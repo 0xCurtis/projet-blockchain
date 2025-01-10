@@ -1,0 +1,172 @@
+Frontend Flow for NFT Listing with GemWallet
+
+1. Prerequisites:
+   - GemWallet browser extension installed
+   - User has NFTs in their account
+   - User is connected to GemWallet
+
+2. Check GemWallet Connection:
+```javascript
+// Check if GemWallet is installed and connected
+async function checkGemWallet() {
+    try {
+        const isInstalled = await window.gem.isInstalled();
+        if (!isInstalled) {
+            showError("Please install GemWallet extension");
+            return false;
+        }
+
+        const network = await window.gem.getNetwork();
+        // Make sure we're on the right network (testnet/mainnet)
+        return true;
+    } catch (error) {
+        showError("Failed to connect to GemWallet");
+        return false;
+    }
+}
+```
+
+3. Get User's Address:
+```javascript
+// Get the connected wallet address
+async function getWalletAddress() {
+    try {
+        const { address } = await window.gem.getAddress();
+        return address;
+    } catch (error) {
+        showError("Failed to get wallet address");
+        return null;
+    }
+}
+```
+
+4. Create NFT Sell Offer:
+```javascript
+async function createNFTListing(nftId, priceXRP) {
+    try {
+        // 1. Get the user's address
+        const sellerAddress = await getWalletAddress();
+        if (!sellerAddress) return;
+
+        // 2. Get the sell offer template from backend
+        const response = await fetch('/api/marketplace/list/template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                nft_id: nftId,
+                seller_address: sellerAddress,
+                price_xrp: priceXRP
+            })
+        });
+
+        const { offer_template } = await response.json();
+
+        // 3. Submit NFTokenCreateOffer transaction using GemWallet
+        const result = await window.gem.submitTransaction({
+            TransactionType: "NFTokenCreateOffer",
+            Account: sellerAddress,
+            NFTokenID: nftId,
+            Amount: String(priceXRP * 1_000_000), // Convert XRP to drops
+            Flags: 1 // Sell offer
+        });
+
+        // 4. Handle the transaction result
+        if (result.hash) {
+            // Transaction was submitted successfully
+            // Track the offer in our backend
+            const trackResponse = await fetch('/api/marketplace/list/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    signed_transaction: result,
+                    nft_id: nftId,
+                    seller_address: sellerAddress,
+                    amount: String(priceXRP * 1_000_000)
+                })
+            });
+
+            showSuccess("NFT listed successfully!");
+            return result.hash;
+        } else {
+            throw new Error("Transaction failed");
+        }
+    } catch (error) {
+        showError("Failed to create NFT listing: " + error.message);
+        return null;
+    }
+}
+```
+
+5. UI Component Example:
+```javascript
+function ListNFTForm({ nftId }) {
+    const [price, setPrice] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        try {
+            // Validate price
+            const priceXRP = parseFloat(price);
+            if (isNaN(priceXRP) || priceXRP <= 0) {
+                throw new Error('Invalid price');
+            }
+
+            // Create the listing
+            const txHash = await createNFTListing(nftId, priceXRP);
+            if (txHash) {
+                // Redirect to listing page or show success
+                showSuccess(`NFT listed successfully! Transaction: ${txHash}`);
+            }
+        } catch (error) {
+            showError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                placeholder="Price in XRP"
+                min="0"
+                step="0.000001"
+                required
+            />
+            <button type="submit" disabled={loading}>
+                {loading ? 'Creating Listing...' : 'List NFT'}
+            </button>
+        </form>
+    );
+}
+```
+
+Key Points:
+1. All NFT offers are created directly on-chain using NFTokenCreateOffer
+2. No need for separate payment transaction - price is included in the offer
+3. GemWallet handles transaction signing and network fees
+4. Backend only tracks the offers for indexing/display purposes
+5. Use Flags: 1 to indicate a sell offer
+6. Always convert XRP to drops (1 XRP = 1,000,000 drops)
+7. Handle both success and error cases appropriately
+8. Verify transaction success using the returned hash
+
+Error Handling:
+- Check GemWallet installation
+- Validate price input
+- Handle network errors
+- Handle transaction rejections
+- Handle backend tracking errors
+
+Best Practices:
+1. Always show loading states during transactions
+2. Provide clear feedback to users
+3. Validate inputs before submitting
+4. Track transaction status
+5. Handle network changes
+6. Implement proper error recovery 

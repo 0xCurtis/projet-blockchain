@@ -1,0 +1,221 @@
+Frontend Flow for Minting RWA NFTs with GemWallet
+
+1. Prerequisites:
+   - GemWallet browser extension installed
+   - User is connected to GemWallet
+   - User has sufficient XRP for minting fees
+   - Required RWA documentation/metadata prepared
+
+2. RWA Metadata Structure:
+```javascript
+const rwaMetadata = {
+    title: "Property Title",
+    asset_type: "Real Estate",  // Real Estate, Fine Art, Vehicle, etc.
+    description: "Detailed description of the asset",
+    location: "Asset physical location",
+    documentation_id: "Legal document reference",
+    // Additional RWA-specific fields
+    specifications: {
+        size: "1000 sq ft",
+        condition: "Excellent",
+        year: "2023",
+        // etc...
+    },
+    legal: {
+        ownership_proof: "deed_reference_123",
+        registration: "reg_number_456",
+        jurisdiction: "jurisdiction_info"
+    }
+};
+```
+
+3. Mint RWA NFT Function:
+```javascript
+async function mintRWANFT(metadata, uri) {
+    try {
+        // 1. Get the user's address
+        const userAddress = await getWalletAddress();
+        if (!userAddress) return;
+
+        // 2. Store metadata and get template from backend
+        const templateResponse = await fetch('/api/transaction/nft/mint/template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                account: userAddress,
+                uri: uri,  // IPFS or other permanent URI
+                metadata: metadata,
+                flags: 8,  // transferable NFT
+                transfer_fee: 0,
+                taxon: 0
+            })
+        });
+
+        const { template } = await templateResponse.json();
+
+        // 3. Submit NFTokenMint transaction using GemWallet
+        const result = await window.gem.submitTransaction({
+            TransactionType: "NFTokenMint",
+            Account: userAddress,
+            URI: template.template.URI,  // Hex-encoded URI from backend
+            Flags: 8,  // transferable NFT
+            NFTokenTaxon: 0,
+            TransferFee: 0
+        });
+
+        // 4. Handle the transaction result
+        if (result.hash) {
+            // Track the mint in our backend
+            const trackResponse = await fetch('/api/transaction/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    signed_transaction: result,
+                    account: userAddress,
+                    uri: uri,
+                    metadata: metadata
+                })
+            });
+
+            showSuccess("RWA NFT minted successfully!");
+            return result.hash;
+        } else {
+            throw new Error("Transaction failed");
+        }
+    } catch (error) {
+        showError("Failed to mint RWA NFT: " + error.message);
+        return null;
+    }
+}
+```
+
+4. UI Component Example:
+```javascript
+function MintRWAForm() {
+    const [formData, setFormData] = useState({
+        title: '',
+        asset_type: '',
+        description: '',
+        location: '',
+        documentation_id: '',
+        // Add other fields as needed
+    });
+    const [loading, setLoading] = useState(false);
+    const [ipfsUri, setIpfsUri] = useState('');
+
+    // Handle file/image upload to IPFS
+    const handleFileUpload = async (file) => {
+        // Implement your IPFS upload logic
+        // Set the resulting URI
+        setIpfsUri('ipfs://...');
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        try {
+            // Validate form data
+            if (!formData.title || !formData.asset_type || !ipfsUri) {
+                throw new Error('Please fill all required fields');
+            }
+
+            // Create metadata object
+            const metadata = {
+                ...formData,
+                created_at: new Date().toISOString(),
+                asset_uri: ipfsUri
+            };
+
+            // Mint the NFT
+            const txHash = await mintRWANFT(metadata, ipfsUri);
+            if (txHash) {
+                showSuccess(`RWA NFT minted successfully! Transaction: ${txHash}`);
+                // Redirect to NFT details page or dashboard
+            }
+        } catch (error) {
+            showError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                value={formData.title}
+                onChange={(e) => setFormData({...formData, title: e.target.value})}
+                placeholder="Asset Title"
+                required
+            />
+            <select
+                value={formData.asset_type}
+                onChange={(e) => setFormData({...formData, asset_type: e.target.value})}
+                required
+            >
+                <option value="">Select Asset Type</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Fine Art">Fine Art</option>
+                <option value="Vehicle">Vehicle</option>
+            </select>
+            <textarea
+                value={formData.description}
+                onChange={(e) => setFormData({...formData, description: e.target.value})}
+                placeholder="Asset Description"
+                required
+            />
+            <input
+                type="text"
+                value={formData.location}
+                onChange={(e) => setFormData({...formData, location: e.target.value})}
+                placeholder="Asset Location"
+                required
+            />
+            <input
+                type="text"
+                value={formData.documentation_id}
+                onChange={(e) => setFormData({...formData, documentation_id: e.target.value})}
+                placeholder="Documentation ID"
+                required
+            />
+            <input
+                type="file"
+                onChange={(e) => handleFileUpload(e.target.files[0])}
+                accept="image/*"
+                required
+            />
+            <button type="submit" disabled={loading || !ipfsUri}>
+                {loading ? 'Minting...' : 'Mint RWA NFT'}
+            </button>
+        </form>
+    );
+}
+```
+
+Key Points:
+1. Proper RWA metadata is crucial for legal compliance
+2. Store asset documentation/proof permanently (IPFS recommended)
+3. URI must be hex-encoded for XRPL
+4. Validate all required documentation before minting
+5. Keep track of legal documentation references
+6. Maintain clear ownership records
+
+Best Practices:
+1. Validate all metadata fields thoroughly
+2. Store sensitive documentation securely
+3. Use permanent storage for asset media/documents
+4. Implement proper error handling
+5. Keep clear audit trails
+6. Verify legal compliance before minting
+7. Include all necessary asset documentation
+8. Maintain backup of all metadata
+
+Error Handling:
+- Validate metadata completeness
+- Check file upload success
+- Verify IPFS storage
+- Handle transaction failures
+- Validate legal documentation
+- Check network connectivity
+- Handle GemWallet errors 
