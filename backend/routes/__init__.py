@@ -1,3 +1,1 @@
-"""
-Routes package initialization.
-"""
+"""Routes package initialization"""
