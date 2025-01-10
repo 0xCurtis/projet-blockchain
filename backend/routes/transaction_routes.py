@@ -106,26 +106,16 @@ def submit_transaction() -> Tuple[Response, int]:
         # Validate required fields
         if not data.get('response'):
             return jsonify({'error': 'XUMM response is required'}), 400
+        if not data.get('uri'):
+            return jsonify({'error': 'URI is required'}), 400
+        if not data.get('metadata'):
+            return jsonify({'error': 'Metadata is required'}), 400
             
         xumm_response = data['response']
         if not xumm_response.get('txid'):
             return jsonify({'error': 'Transaction ID not found in XUMM response'}), 400
-            
-        # Verify the transaction on XRPL
-        tx_result = verify_xrpl_transaction(
-            transaction_hash=xumm_response['txid']
-        )
         
-        if not tx_result['success']:
-            return jsonify({
-                'status': 'error',
-                'message': tx_result['message']
-            }), 400
-            
-        # If this is an NFT mint, track it
-        if (tx_result['transaction'].get('TransactionType') == 'NFTokenMint' 
-            and data.get('uri') and data.get('metadata')):
-            track_nft_mint(
+        track_nft_mint(
                 account=xumm_response['account'],
                 uri=data['uri'],
                 transaction_hash=xumm_response['txid'],
