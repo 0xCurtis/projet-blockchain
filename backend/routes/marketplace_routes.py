@@ -12,7 +12,6 @@ from backend.services.mongodb_service import (
 from backend.services.xrpl_service import (
     create_payment_template,
     create_nft_offer_template,
-    submit_signed_transaction,
     verify_nft_ownership,
     create_nft_sell_offer_template,
     verify_xrpl_transaction
