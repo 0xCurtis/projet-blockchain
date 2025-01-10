@@ -1,7 +1,7 @@
 """Flask application entry point"""
 from flask import Flask
 from flask_cors import CORS
-from routes import transaction_routes, marketplace_routes
+from .routes import transaction_routes, marketplace_routes
 import os
 from dotenv import load_dotenv
 
