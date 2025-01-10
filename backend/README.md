@@ -150,39 +150,56 @@ Le service MongoDB (`mongodb_service.py`) gère :
 
 ### Installation
 ```bash
-# Création de l'environnement virtuel
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-
-# Installation des dépendances
-pip install -r requirements.txt
-
-# Configuration des variables d'environnement
-export MONGODB_URI="votre_uri_mongodb"
-export XRPL_NODE_URL="url_du_noeud_xrpl"
-
-# Démarrage du serveur
-python app.py
+pytest -v
 ```
 
-### Surveillance
-- Logs d'application dans `app.log`
-- Monitoring MongoDB
-- Suivi des transactions XRPL
+## Asset Types
 
-### Maintenance
-- Sauvegarde régulière de la base de données
-- Mise à jour des dépendances
-- Surveillance des performances
+### Real Estate
+- Properties, buildings, land
+- Includes location, square footage, amenities
 
-## Contribution
-Pour contribuer au projet :
-1. Forker le dépôt
-2. Créer une branche pour votre fonctionnalité
-3. Soumettre une pull request
+### Fine Art
+- Paintings, sculptures, collectibles
+- Includes artist, provenance, authentication
+
+### Vehicles
+- Cars, boats, aircraft
+- Includes VIN, specifications, features
+
+## Development
+
+### Project Structure
+```
+backend/
+├── app.py              # Application entry point
+├── models/             # Database models
+├── routes/             # API routes
+├── services/           # Business logic
+├── tests/             # Test suite
+└── migrations/        # Database migrations
+```
+
+### Adding New Features
+
+1. Create new models in `models/`
+2. Add routes in `routes/`
+3. Implement business logic in `services/`
+4. Add tests in `tests/`
+5. Update documentation
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+[MIT License](LICENSE)
 
 ## Support
-Pour toute question ou problème :
-- Ouvrir une issue sur GitHub
-- Contacter l'équipe de développement 
+
+For support, please open an issue in the GitHub repository. 
