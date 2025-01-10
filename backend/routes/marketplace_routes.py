@@ -14,6 +14,7 @@ from backend.services.xrpl_service import (
     submit_signed_transaction,
     verify_nft_ownership
 )
+from datetime import datetime
 
 bp = Blueprint('marketplace', __name__, url_prefix='/api/marketplace')
 
@@ -33,6 +34,10 @@ def list_nft() -> Tuple[Response, int]:
         if not data.get('metadata_hash'):
             return jsonify({'error': 'metadata_hash is required'}), 400
             
+        # Verify NFT ownership
+        if not verify_nft_ownership(data['seller_address'], data['nft_id']):
+            return jsonify({'error': 'Seller does not own this NFT'}), 403
+
         # Create the listing
         listing = create_listing(
             nft_id=data['nft_id'],
@@ -171,4 +176,94 @@ def submit_buy_transaction(listing_id: str) -> Tuple[Response, int]:
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
     except Exception as e:
-        return jsonify({'error': str(e)}), 500 
+        return jsonify({'error': str(e)}), 500
+
+@bp.route('/listing/<listing_id>/prepare-buy', methods=['GET'])
+def prepare_buy_info(listing_id: str) -> Tuple[Response, int]:
+    """Get necessary information to create an NFT offer in the wallet"""
+    try:
+        listing = get_listing(listing_id)
+        
+        # Prepare the response with all necessary information for the wallet
+        buy_info = {
+            'nft_id': listing['nft_id'],
+            'seller_address': listing['seller_address'],
+            'price_drops': listing['price_drops'],  # Price in drops for exact amount
+            'listing_id': listing_id,
+            'metadata_hash': listing['metadata_hash']
+        }
+        
+        return jsonify({
+            'status': 'success',
+            'buy_info': buy_info
+        }), 200
+        
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 404
+    except Exception as e:
+        return jsonify({'error': f'Failed to prepare buy info: {str(e)}'}), 500
+
+@bp.route('/listing/<listing_id>/validate-purchase', methods=['POST'])
+def validate_purchase(listing_id: str) -> Tuple[Response, int]:
+    """Validate a completed NFT purchase and update listing status"""
+    try:
+        data = request.get_json()
+        required_fields = ['buyer_address', 'transaction_hash']
+        
+        if not all(field in data for field in required_fields):
+            return jsonify({'error': 'Missing required fields'}), 400
+            
+        listing = get_listing(listing_id)
+        
+        # Verify the new owner
+        if not verify_nft_ownership(data['buyer_address'], listing['nft_id']):
+            return jsonify({
+                'status': 'pending',
+                'message': 'Waiting for transaction confirmation'
+            }), 202
+            
+        # Update listing status to sold
+        update_listing_status(listing_id, 'sold', {
+            'buyer_address': data['buyer_address'],
+            'transaction_hash': data['transaction_hash'],
+            'sold_at': datetime.utcnow().isoformat()
+        })
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'Purchase validated and listing updated'
+        }), 200
+        
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': f'Failed to validate purchase: {str(e)}'}), 500
+
+@bp.route('/listing/<listing_id>/cancel', methods=['POST'])
+def cancel_listing(listing_id: str) -> Tuple[Response, int]:
+    """Cancel an active listing"""
+    try:
+        data = request.get_json()
+        if 'seller_address' not in data:
+            return jsonify({'error': 'Seller address is required'}), 400
+            
+        listing = get_listing(listing_id)
+        
+        # Verify the seller owns the listing
+        if listing['seller_address'] != data['seller_address']:
+            return jsonify({'error': 'Unauthorized to cancel this listing'}), 403
+            
+        # Update listing status to cancelled
+        update_listing_status(listing_id, 'cancelled', {
+            'cancelled_at': datetime.utcnow().isoformat()
+        })
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'Listing cancelled successfully'
+        }), 200
+        
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': f'Failed to cancel listing: {str(e)}'}), 500 

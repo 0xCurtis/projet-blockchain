@@ -1,31 +1,46 @@
 """Flask application entry point"""
-import os
-from flask import Flask, jsonify
-from flask_pymongo import PyMongo
+from flask import Flask
 from flask_cors import CORS
+from routes import transaction_routes, marketplace_routes
+import os
 from dotenv import load_dotenv
-from backend.routes.transaction_routes import bp as transaction_bp
 
 # Load environment variables
 load_dotenv()
 
-# Create Flask app
-app = Flask(__name__)
+def create_app(config_name=None):
+    """Create and configure the Flask application."""
+    app = Flask(__name__)
+    CORS(app)
 
-# Enable CORS
-CORS(app)
+    # Get MongoDB URI and database name
+    mongodb_uri = os.getenv('MONGODB_URI')
+    
+    # Configuration based on environment
+    if config_name == 'testing':
+        app.config.update({
+            'TESTING': True,
+            'MONGODB_URI': mongodb_uri,
+            'MONGODB_DB': os.getenv('MONGODB_TEST_DB', 'rwa_test'),
+            'XRPL_NODE_URL': os.getenv('XRPL_NODE_URL')
+        })
+    else:
+        app.config.update({
+            'MONGODB_URI': mongodb_uri,
+            'MONGODB_DB': os.getenv('MONGODB_DB', 'rwa'),
+            'XRPL_NODE_URL': os.getenv('XRPL_NODE_URL')
+        })
 
-# Configure MongoDB
-app.config["MONGO_URI"] = os.getenv("MONGODB_URI")
-mongo = PyMongo(app)
+    # Register blueprints
+    app.register_blueprint(transaction_routes.bp)
+    app.register_blueprint(marketplace_routes.bp)
 
-# Register blueprints
-app.register_blueprint(transaction_bp)
+    return app
 
-# Health check endpoint
-@app.route('/health')
-def health_check():
-    return jsonify({'status': 'healthy'}), 200
-
-if __name__ == "__main__":
-    app.run(debug=True) 
+if __name__ == '__main__':
+    app = create_app()
+    app.run(
+        host=os.getenv('HOST', '0.0.0.0'),
+        port=int(os.getenv('PORT', 5000)),
+        debug=True
+    ) 

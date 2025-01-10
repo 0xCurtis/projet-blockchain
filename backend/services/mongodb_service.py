@@ -261,32 +261,43 @@ def get_listing(listing_id: str) -> Dict[str, Any]:
     except Exception as e:
         raise ValueError(f"Failed to get listing: {str(e)}")
 
-def update_listing_status(listing_id: str, status: str, buyer_address: str = None, reason: str = None) -> Dict[str, Any]:
-    """Update a listing's status"""
+def update_listing_status(listing_id: str, status: str, additional_data: Dict[str, Any] = None) -> Dict[str, Any]:
+    """Update the status of a marketplace listing and add additional data"""
     try:
         db = get_db()
         listing_collection = db.marketplace_listings
         
+        # Verify listing exists
+        existing = listing_collection.find_one({"listing_id": listing_id})
+        if not existing:
+            raise ValueError(f"Listing {listing_id} not found")
+            
+        # Prepare update data
         update_data = {
             "status": status,
             "updated_at": datetime.utcnow()
         }
-        if buyer_address:
-            update_data["buyer_address"] = buyer_address
-        if reason:
-            update_data["status_reason"] = reason
         
+        # Add any additional data
+        if additional_data:
+            update_data.update(additional_data)
+        
+        # Update the listing
         result = listing_collection.update_one(
             {"listing_id": listing_id},
             {"$set": update_data}
         )
         
         if result.modified_count == 0:
-            raise ValueError(f"Listing {listing_id} not found")
+            raise ValueError(f"Failed to update listing {listing_id}")
             
-        return {"status": "success", "message": f"Listing status updated to {status}"}
+        # Get and return the updated listing
+        updated_listing = listing_collection.find_one({"listing_id": listing_id})
+        updated_listing["_id"] = str(updated_listing["_id"])
+        return updated_listing
+        
     except Exception as e:
-        raise ValueError(f"Failed to update listing: {str(e)}")
+        raise ValueError(f"Failed to update listing status: {str(e)}")
 
 def ensure_indexes():
     """Ensure required indexes exist in MongoDB"""
