@@ -1,5 +1,5 @@
 """XRPL service for transaction handling"""
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 import xrpl
 import json
 from xrpl.clients import JsonRpcClient
@@ -105,6 +105,50 @@ def create_nft_offer_template(
         }
     except Exception as e:
         raise ValueError(f"Failed to generate NFT offer template: {str(e)}")
+
+def create_nft_sell_offer_template(
+    account: str,
+    nft_id: str,
+    amount: str,
+    expiration: Optional[int] = None,
+    destination: Optional[str] = None
+) -> Dict[str, Any]:
+    """Generate an unsigned NFTokenCreateOffer transaction template for selling an NFT
+    
+    Args:
+        account: The address of the NFT owner
+        nft_id: The ID of the NFT to sell
+        amount: The amount in drops that the NFT is being sold for
+        expiration: Optional Unix timestamp when the offer expires
+        destination: Optional specific address that can buy the NFT
+    """
+    try:
+        # Create the NFTokenCreateOffer transaction
+        offer_tx = NFTokenCreateOffer(
+            account=account,
+            nftoken_id=nft_id,
+            amount=amount,
+            flags=1  # Flag 1 indicates a sell offer
+        )
+        
+        # Add optional fields if provided
+        if expiration:
+            offer_tx.expiration = expiration
+        if destination:
+            offer_tx.destination = destination
+        
+        # Convert to dictionary for JSON serialization
+        return {
+            "transaction_type": "NFTokenCreateOffer",
+            "template": offer_tx.to_dict(),
+            "instructions": {
+                "fee": "10",  # Standard fee in drops
+                "sequence": None,  # Client needs to set this
+                "last_ledger_sequence": None  # Client needs to set this
+            }
+        }
+    except Exception as e:
+        raise ValueError(f"Failed to generate NFT sell offer template: {str(e)}")
 
 def submit_signed_transaction(
     signed_tx: Dict[str, Any],

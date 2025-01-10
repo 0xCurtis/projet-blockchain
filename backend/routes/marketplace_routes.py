@@ -267,3 +267,78 @@ def cancel_listing(listing_id: str) -> Tuple[Response, int]:
         return jsonify({'error': str(e)}), 400
     except Exception as e:
         return jsonify({'error': f'Failed to cancel listing: {str(e)}'}), 500 
+
+@bp.route('/list/template', methods=['POST'])
+def create_sell_offer_template() -> Tuple[Response, int]:
+    """Create an NFTokenCreateOffer template for selling an NFT"""
+    try:
+        data = request.get_json()
+        
+        # Validate required fields
+        if not data.get('nft_id'):
+            return jsonify({'error': 'nft_id is required'}), 400
+        if not data.get('price_xrp'):
+            return jsonify({'error': 'price_xrp is required'}), 400
+        if not data.get('seller_address'):
+            return jsonify({'error': 'seller_address is required'}), 400
+            
+        # Verify NFT ownership
+        if not verify_nft_ownership(data['seller_address'], data['nft_id']):
+            return jsonify({'error': 'Seller does not own this NFT'}), 403
+
+        # Create the NFTokenCreateOffer template
+        amount_drops = int(float(data['price_xrp']) * 1_000_000)  # Convert XRP to drops
+        offer_template = create_nft_sell_offer_template(
+            account=data['seller_address'],
+            nft_id=data['nft_id'],
+            amount=str(amount_drops)  # Amount in drops as string
+        )
+        
+        return jsonify({
+            'offer_template': offer_template,
+            'message': 'Offer template created successfully'
+        }), 200
+        
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@bp.route('/list/submit', methods=['POST'])
+def submit_sell_offer() -> Tuple[Response, int]:
+    """Submit a signed NFTokenCreateOffer transaction"""
+    try:
+        data = request.get_json()
+        
+        if not data.get('signed_transaction'):
+            return jsonify({'error': 'signed_transaction is required'}), 400
+            
+        # Submit the signed transaction to XRPL
+        result = submit_signed_transaction(data['signed_transaction'])
+        
+        if result['status'] == 'success':
+            # Track the offer in our database
+            offer_data = {
+                'transaction_hash': result['hash'],
+                'nft_id': data['nft_id'],
+                'seller_address': data['seller_address'],
+                'price_drops': data['amount'],
+                'status': 'active'
+            }
+            track_nft_offer(offer_data)
+            
+            return jsonify({
+                'status': 'success',
+                'transaction_hash': result['hash'],
+                'message': 'NFT offer created successfully'
+            }), 200
+        else:
+            return jsonify({
+                'error': 'Failed to submit offer',
+                'details': result
+            }), 400
+            
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500 
