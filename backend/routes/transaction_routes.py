@@ -134,8 +134,6 @@ def submit_transaction() -> Tuple[Response, int]:
             
         return jsonify({
             'status': 'success',
-            'transaction_hash': xumm_response['txid'],
-            'transaction_result': tx_result['transaction'],
             'message': 'Transaction submitted successfully'
         }), 200
             
