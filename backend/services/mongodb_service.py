@@ -10,8 +10,10 @@ import hashlib
 def get_db():
     """Get MongoDB database connection"""
     mongo_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+    print(mongo_uri)
     client = MongoClient(mongo_uri)
-    db_name = os.getenv("MONGODB_DB", "xrpl_nft_platform")
+    db_name = os.getenv("MONGODB_DB", "rwa")
+    print(db_name)
     return client[db_name]
 
 def compute_metadata_hash(metadata: Dict[str, Any]) -> str:
@@ -36,7 +38,7 @@ def store_metadata(metadata: Dict[str, Any]) -> Tuple[str, str]:
     try:
         db = get_db()
         metadata_collection = db.nft_metadata
-        
+        print(metadata_collection)
         # Generate a deterministic hash of the metadata
         metadata_hash = compute_metadata_hash(metadata)
         
