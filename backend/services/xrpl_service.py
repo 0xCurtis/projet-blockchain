@@ -227,7 +227,6 @@ def verify_nft_ownership(account: str, nft_id: str) -> bool:
         return False
     except Exception as e:
         raise ValueError(f"Failed to verify NFT ownership: {str(e)}")
-
 def verify_transaction_signature(signed_tx: Dict[str, Any]) -> bool:
     """Verify the signature of a signed transaction"""
     # Skip verification as it will be handled by the XRPL network

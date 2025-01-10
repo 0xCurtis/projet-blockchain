@@ -330,5 +330,112 @@ def ensure_indexes():
     except Exception as e:
         raise ValueError(f"Failed to create indexes: {str(e)}")
 
+def update_nft_ownership(nft_id: str, new_owner: str, transaction_hash: str) -> Dict[str, Any]:
+    """Update the ownership of an NFT after a purchase"""
+    try:
+        db = get_db()
+        nft_collection = db.nfts
+        
+        # Update the NFT document
+        result = nft_collection.update_one(
+            {"nft_id": nft_id},
+            {
+                "$set": {
+                    "account": new_owner,
+                    "last_transfer_hash": transaction_hash,
+                    "updated_at": datetime.utcnow()
+                }
+            }
+        )
+        
+        if result.modified_count == 0:
+            raise ValueError(f"NFT {nft_id} not found")
+            
+        return {
+            "status": "success",
+            "message": f"NFT ownership updated to {new_owner}"
+        }
+    except Exception as e:
+        raise ValueError(f"Failed to update NFT ownership: {str(e)}")
+
+def update_listing_by_offer(
+    sell_offer_id: str,
+    status: str,
+    buyer_address: str,
+    transaction_hash: str,
+    final_price_drops: int
+) -> Dict[str, Any]:
+    """Update a listing status after a successful purchase"""
+    try:
+        db = get_db()
+        listing_collection = db.marketplace_listings
+        
+        # Update the listing
+        result = listing_collection.update_one(
+            {"sell_offer_id": sell_offer_id},
+            {
+                "$set": {
+                    "status": status,
+                    "buyer_address": buyer_address,
+                    "transaction_hash": transaction_hash,
+                    "final_price_drops": final_price_drops,
+                    "completed_at": datetime.utcnow(),
+                    "updated_at": datetime.utcnow()
+                }
+            }
+        )
+        
+        if result.modified_count == 0:
+            raise ValueError(f"Listing with offer {sell_offer_id} not found")
+            
+        return {
+            "status": "success",
+            "message": f"Listing updated to {status}"
+        }
+    except Exception as e:
+        raise ValueError(f"Failed to update listing: {str(e)}")
+
+def record_purchase_transaction(
+    nft_id: str,
+    buyer: str,
+    price_drops: int,
+    transaction_hash: str
+) -> Dict[str, Any]:
+    """Record a purchase transaction in the history"""
+    try:
+        db = get_db()
+        transaction_collection = db.nft_transactions
+        
+        transaction = {
+            "transaction_id": str(uuid.uuid4()),
+            "nft_id": nft_id,
+            "buyer_address": buyer,
+            "price_drops": price_drops,
+            "transaction_hash": transaction_hash,
+            "transaction_type": "purchase",
+            "created_at": datetime.utcnow()
+        }
+        
+        result = transaction_collection.insert_one(transaction)
+        transaction["_id"] = str(result.inserted_id)
+        
+        return transaction
+    except Exception as e:
+        raise ValueError(f"Failed to record purchase transaction: {str(e)}")
+
+def track_nft_offer(offer_data: Dict[str, Any]) -> Dict[str, Any]:
+    """Track an NFT offer in the database"""
+    try:
+        db = get_db()
+        offer_collection = db.nft_offers
+        
+        offer_data['created_at'] = datetime.utcnow()
+        result = offer_collection.insert_one(offer_data)
+        
+        offer_data['_id'] = str(result.inserted_id)
+        return offer_data
+    except Exception as e:
+        raise ValueError(f"Failed to track NFT offer: {str(e)}")
+
 # Create indexes when module is imported
 ensure_indexes() 

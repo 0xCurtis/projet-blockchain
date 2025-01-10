@@ -6,13 +6,15 @@ from backend.services.mongodb_service import (
     get_active_listings,
     get_listing,
     update_listing_status,
-    get_metadata_by_hash
+    get_metadata_by_hash,
+    track_nft_offer
 )
 from backend.services.xrpl_service import (
     create_payment_template,
     create_nft_offer_template,
     submit_signed_transaction,
-    verify_nft_ownership
+    verify_nft_ownership,
+    create_nft_sell_offer_template
 )
 from datetime import datetime
 
