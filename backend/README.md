@@ -173,33 +173,7 @@ pytest -v
 ```
 backend/
 ├── app.py              # Application entry point
-├── models/             # Database models
 ├── routes/             # API routes
 ├── services/           # Business logic
 ├── tests/             # Test suite
-└── migrations/        # Database migrations
 ```
-
-### Adding New Features
-
-1. Create new models in `models/`
-2. Add routes in `routes/`
-3. Implement business logic in `services/`
-4. Add tests in `tests/`
-5. Update documentation
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-[MIT License](LICENSE)
-
-## Support
-
-For support, please open an issue in the GitHub repository. 
