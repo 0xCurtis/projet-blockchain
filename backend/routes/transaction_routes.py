@@ -15,7 +15,7 @@ from backend.services.mongodb_service import (
 import os
 import json 
 
-bp = Blueprint('transactions', __name__, url_prefix='/api/transactions')
+bp = Blueprint('transactions', __name__, url_prefix='/api/transaction')
 
 # Get the API endpoint from environment or use default
 API_ENDPOINT = os.getenv("API_ENDPOINT", "http://localhost:5000/api/transaction")
