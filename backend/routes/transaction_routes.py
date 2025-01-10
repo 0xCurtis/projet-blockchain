@@ -114,13 +114,17 @@ def submit_transaction() -> Tuple[Response, int]:
         xumm_response = data['response']
         if not xumm_response.get('txid'):
             return jsonify({'error': 'Transaction ID not found in XUMM response'}), 400
+            
+        # Add transaction hash to metadata
+        metadata = data['metadata']
+        metadata['minting_transaction'] = xumm_response['txid']
         
         track_nft_mint(
-                account=xumm_response['account'],
-                uri=data['uri'],
-                transaction_hash=xumm_response['txid'],
-                metadata=data['metadata']
-            )
+            account=xumm_response['account'],
+            uri=data['uri'],
+            transaction_hash=xumm_response['txid'],
+            metadata=metadata
+        )
             
         return jsonify({
             'status': 'success',
