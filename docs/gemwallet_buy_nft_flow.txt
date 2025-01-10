@@ -1,0 +1,196 @@
+Frontend Flow for Buying NFTs with GemWallet
+
+1. Prerequisites:
+   - GemWallet browser extension installed
+   - User has sufficient XRP for purchase and fees
+   - User is connected to GemWallet
+
+2. Buy NFT Function:
+```javascript
+async function buyNFT(nftId, sellOfferId, priceDrops) {
+    try {
+        // 1. Get the buyer's address
+        const buyerAddress = await getWalletAddress();
+        if (!buyerAddress) return;
+
+        // 2. Create NFTokenAcceptOffer transaction using GemWallet
+        const result = await window.gem.submitTransaction({
+            TransactionType: "NFTokenAcceptOffer",
+            Account: buyerAddress,
+            NFTokenSellOffer: sellOfferId,  // The ID of the sell offer to accept
+            // No need to specify amount as it's in the sell offer
+        });
+
+        // 3. Handle the transaction result
+        if (result.hash) {
+            // Track the purchase in our backend
+            const trackResponse = await fetch('/api/marketplace/purchase/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    transaction_hash: result.hash,
+                    nft_id: nftId,
+                    buyer_address: buyerAddress,
+                    sell_offer_id: sellOfferId,
+                    price_drops: priceDrops
+                })
+            });
+
+            showSuccess("NFT purchased successfully!");
+            return result.hash;
+        } else {
+            throw new Error("Transaction failed");
+        }
+    } catch (error) {
+        showError("Failed to buy NFT: " + error.message);
+        return null;
+    }
+}
+```
+
+3. UI Component Example:
+```javascript
+function BuyNFTButton({ nft, sellOffer }) {
+    const [loading, setLoading] = useState(false);
+
+    const handleBuy = async () => {
+        setLoading(true);
+        try {
+            // Show confirmation dialog with price
+            const priceXRP = sellOffer.amount / 1_000_000; // Convert drops to XRP
+            const confirmed = await showConfirmDialog({
+                title: 'Confirm Purchase',
+                message: `Are you sure you want to buy this NFT for ${priceXRP} XRP?`,
+                nftDetails: nft
+            });
+
+            if (!confirmed) {
+                return;
+            }
+
+            // Execute purchase
+            const txHash = await buyNFT(
+                nft.nft_id,
+                sellOffer.offer_id,
+                sellOffer.amount
+            );
+
+            if (txHash) {
+                showSuccess(`NFT purchased successfully! Transaction: ${txHash}`);
+                // Optionally redirect to user's NFT collection
+                // window.location.href = '/my-nfts';
+            }
+        } catch (error) {
+            showError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <button 
+            onClick={handleBuy} 
+            disabled={loading}
+            className="buy-nft-button"
+        >
+            {loading ? 'Processing...' : `Buy for ${sellOffer.amount / 1_000_000} XRP`}
+        </button>
+    );
+}
+```
+
+4. Backend Route (Python/Flask):
+```python
+@bp.route('/purchase/track', methods=['POST'])
+def track_nft_purchase() -> Tuple[Response, int]:
+    """Track an NFT purchase and update database records"""
+    try:
+        data = request.get_json()
+        required_fields = [
+            'transaction_hash', 
+            'nft_id', 
+            'buyer_address', 
+            'sell_offer_id',
+            'price_drops'
+        ]
+        
+        if not all(field in data for field in required_fields):
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        # 1. Verify the transaction on XRPL
+        tx_result = verify_xrpl_transaction(
+            data['transaction_hash'],
+            expected_type="NFTokenAcceptOffer"
+        )
+        if not tx_result['success']:
+            return jsonify({
+                'status': 'pending',
+                'message': 'Waiting for transaction confirmation'
+            }), 202
+
+        # 2. Update NFT ownership in database
+        update_nft_ownership(
+            nft_id=data['nft_id'],
+            new_owner=data['buyer_address'],
+            transaction_hash=data['transaction_hash']
+        )
+
+        # 3. Update marketplace listing status
+        update_listing_by_offer(
+            sell_offer_id=data['sell_offer_id'],
+            status='completed',
+            buyer_address=data['buyer_address'],
+            transaction_hash=data['transaction_hash'],
+            final_price_drops=data['price_drops']
+        )
+
+        # 4. Record the purchase transaction
+        record_purchase_transaction(
+            nft_id=data['nft_id'],
+            buyer=data['buyer_address'],
+            price_drops=data['price_drops'],
+            transaction_hash=data['transaction_hash']
+        )
+
+        return jsonify({
+            'status': 'success',
+            'message': 'Purchase tracked successfully',
+            'transaction_hash': data['transaction_hash']
+        }), 200
+
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': f'Failed to track purchase: {str(e)}'}), 500
+```
+
+Key Points:
+1. Use NFTokenAcceptOffer for direct on-chain purchase
+2. No need for separate payment - amount is in the sell offer
+3. Verify transaction success before updating database
+4. Update both NFT ownership and listing status
+5. Keep transaction history for auditing
+
+Best Practices:
+1. Verify user has sufficient balance before purchase
+2. Show clear confirmation with price and details
+3. Handle network errors gracefully
+4. Update UI immediately after successful purchase
+5. Keep transaction records for accounting
+6. Verify transaction on XRPL before updating database
+
+Error Handling:
+- Check GemWallet connection
+- Verify sufficient balance
+- Handle transaction rejections
+- Handle network timeouts
+- Validate transaction success
+- Handle database update failures
+- Provide clear error messages
+
+Database Updates:
+1. NFT ownership record
+2. Listing status
+3. Transaction history
+4. Purchase records
+5. Price history 

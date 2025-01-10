@@ -45,13 +45,17 @@ def get_nft_mint_template() -> Tuple[Response, int]:
         print(f"URI length: {len(uri)}")
         print(f"URI: {uri}")
         print(f"Metadata: {json.dumps(metadata, indent=2)}")
-            
+        # check transfer fee
+        transfer_fee = data.get('transfer_fee', 0)
+        if transfer_fee > 0:
+            # check if transfer fee is a percentage by multiplying by 1000 and be sure it's a int not a float if so round it to the nearest int
+            transfer_fee = int(round(data.get('transfer_fee') * 1000))   
         # Generate the transaction template
         template = generate_nft_mint_template(
             account=data.get('account'),
             uri=uri,
             flags=data.get('flags', 8),
-            transfer_fee=data.get('transfer_fee', 0),
+            transfer_fee=transfer_fee,
             taxon=data.get('taxon', 0),
             metadata=metadata
         )

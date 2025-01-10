@@ -1,0 +1,67 @@
+NFT Listing Flow with GemWallet
+==========================
+
+1. PREPARE THE OFFER TEMPLATE
+----------------------------
+First, get a sell offer template from the backend that will be used with GemWallet.
+
+Request:
+POST /api/marketplace/list/template
+{
+    "nft_id": "000100001234567890ABCDEF...",
+    "price_xrp": "100",
+    "seller_address": "rN7n7...",
+}
+
+Response:
+{
+    "offer_template": {
+        "transaction_type": "NFTokenCreateOffer",
+        "template": {
+            "account": "rN7n7...",
+            "nftoken_id": "000100001234567890ABCDEF...",
+            "amount": "100000000",  // 100 XRP in drops
+            "flags": 1  // Sell offer flag
+        },
+        "instructions": {
+            "fee": "10"
+        }
+    }
+}
+
+2. SUBMIT WITH GEMWALLET
+-----------------------
+Use GemWallet to sign and submit the offer template.
+
+JavaScript:
+const result = await window.gem.submitTransaction(offer_template.template);
+
+3. TRACK THE OFFER
+-----------------
+After successful submission, track the offer in the backend.
+
+Request:
+POST /api/marketplace/list/submit
+{
+    "signed_transaction": result,
+    "nft_id": "000100001234567890ABCDEF...",
+    "seller_address": "rN7n7...",
+    "amount": "100000000"
+}
+
+Response:
+{
+    "status": "success",
+    "transaction_hash": "ABC123...",
+    "message": "NFT offer created successfully"
+}
+
+Key Points:
+----------
+1. Always verify GemWallet is installed and connected before starting
+2. Price must be converted from XRP to drops (1 XRP = 1,000,000 drops)
+3. Store the transaction hash for reference
+4. Handle errors appropriately at each step
+5. Verify the NFT is owned by the seller before listing
+6. The offer is created directly on the XRPL ledger
+7. The backend tracks the offer for marketplace display 
