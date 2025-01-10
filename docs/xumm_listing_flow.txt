@@ -1,0 +1,85 @@
+NFT Listing Flow with XUMM
+=======================
+
+1. PREPARE THE OFFER TEMPLATE
+----------------------------
+First, get a sell offer template from the backend that will be used with XUMM.
+
+Request:
+POST /api/marketplace/list/template
+{
+    "nft_id": "000100001234567890ABCDEF...",
+    "price_xrp": "100",
+    "seller_address": "rN7n7...",
+}
+
+Response:
+{
+    "offer_template": {
+        "transaction_type": "NFTokenCreateOffer",
+        "template": {
+            "TransactionType": "NFTokenCreateOffer",
+            "Account": "rN7n7...",
+            "NFTokenID": "000100001234567890ABCDEF...",
+            "Amount": "100000000",  // 100 XRP in drops
+            "Flags": 1  // Sell offer flag
+        }
+    }
+}
+
+2. SUBMIT WITH XUMM
+------------------
+Use XUMM SDK to create and submit the transaction.
+
+JavaScript:
+const xumm = new Xumm('YOUR_API_KEY')
+const payload = await xumm.payload.create({
+    txjson: offer_template.template
+})
+
+// Redirect user to payload.next.always to sign with XUMM
+window.location.href = payload.next.always
+
+// After user returns, check transaction status
+const result = await xumm.payload.get(payload.uuid)
+if (result.response.txid) {
+    // Transaction was signed and submitted
+}
+
+3. TRACK THE OFFER
+-----------------
+After successful submission, track the offer in the backend.
+
+Request:
+POST /api/marketplace/list/submit
+{
+    "response": {
+        "hex": "73210327...",  // XUMM signed transaction hex
+        "txid": "024E9B7C...",  // Transaction ID from XRPL
+        "account": "rwbPG...",  // Seller's account
+        // ... other XUMM response fields
+    },
+    "nft_id": "000100001234567890ABCDEF...",
+    "amount": "100000000"  // Price in drops
+}
+
+Response:
+{
+    "status": "success",
+    "transaction_hash": "024E9B7C...",
+    "offer_id": "ADB123...",  // NFTokenOfferID from XRPL
+    "message": "NFT offer created successfully"
+}
+
+Key Points:
+----------
+1. XUMM requires an API key - get one from xumm.app developer console
+2. Price must be converted from XRP to drops (1 XRP = 1,000,000 drops)
+3. Store the transaction hash for reference
+4. Handle errors appropriately at each step
+5. Verify the NFT is owned by the seller before listing
+6. The offer is created directly on the XRPL ledger
+7. The backend tracks the offer for marketplace display
+8. XUMM provides both mobile and web signing options
+9. Always use proper XRPL transaction field names (e.g., "TransactionType" instead of "transaction_type")
+10. Test transactions on testnet before deploying to mainnet 

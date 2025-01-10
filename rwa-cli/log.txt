@@ -1,0 +1,1571 @@
+2025-01-10 00:25:39 - INFO - cli.py:173 - Creating balance request for rKG9B89ihcjjHg4TT4ARBSK9RqnQFTsteQ
+2025-01-10 00:25:40 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:25:40 - INFO - cli.py:176 - Raw response: {
+  "account_data": {
+    "Account": "rKG9B89ihcjjHg4TT4ARBSK9RqnQFTsteQ",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2C8E349E4C274DF2A5A974AED64916010F4BD6F7B60A32EF079142A01F21BDBE",
+    "PreviousTxnLgrSeq": 3840973,
+    "Sequence": 3840973,
+    "index": "BEC3102ECD1FF5FE2E8263FE9E9536E90D50943CD5FFB2DC66692222E7D327D8"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "27BA50A42FC957D56A0449DE5C6254C4FBA830B06858D6253C5AC9E43DC8F745",
+  "ledger_index": 3841037,
+  "validated": true
+}
+2025-01-10 00:25:40 - INFO - cli.py:184 - Balance fetched: 100.0 XRP
+2025-01-10 00:27:21 - INFO - cli.py:177 - Creating balance request for rKG9B89ihcjjHg4TT4ARBSK9RqnQFTsteQ
+2025-01-10 00:27:22 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:27:22 - INFO - cli.py:180 - Raw response: {
+  "account_data": {
+    "Account": "rKG9B89ihcjjHg4TT4ARBSK9RqnQFTsteQ",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2C8E349E4C274DF2A5A974AED64916010F4BD6F7B60A32EF079142A01F21BDBE",
+    "PreviousTxnLgrSeq": 3840973,
+    "Sequence": 3840973,
+    "index": "BEC3102ECD1FF5FE2E8263FE9E9536E90D50943CD5FFB2DC66692222E7D327D8"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "850982C8FD37C641D7F331545C74D71FC2F3937C56FFE7ACF2FCFCAAB64E6C87",
+  "ledger_index": 3841068,
+  "validated": true
+}
+2025-01-10 00:27:22 - INFO - cli.py:188 - Balance fetched: 100.0 XRP
+2025-01-10 00:27:26 - ERROR - cli.py:162 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:27:26 - ERROR - cli.py:278 - Error switching wallet: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:34:20 - INFO - cli.py:169 - Creating balance request for rGR7eSyw1q8iiK6ezuHX1bgjCrYvtFZsQ2
+2025-01-10 00:34:22 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:34:22 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rGR7eSyw1q8iiK6ezuHX1bgjCrYvtFZsQ2",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "3EDBE8090E7A5A2651F328973AD0034A28F5E3CA41BB40C80DA72DFC68A632AA",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "57D6BE59A64578CE2333AE917C1B455C9D42C9180DD082283A8B181F2D1A12AC"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "756532113A2AE34A3235E75E8E218DD6A8BA805C0092CC3920FA82AC58B69058",
+  "ledger_index": 3841196,
+  "validated": true
+}
+2025-01-10 00:34:22 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:34:26 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:34:26 - ERROR - cli.py:277 - Error switching wallet: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:14 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:36:15 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:36:16 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "82400D1829D31B91F507F153862C5776534DE654D26F3D853D030700E2A09C59",
+  "ledger_index": 3841232,
+  "validated": true
+}
+2025-01-10 00:36:16 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:36:17 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:17 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:18 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:18 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:19 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:19 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:21 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:22 - ERROR - cli.py:316 - Error updating UI after wallet removal: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:23 - ERROR - cli.py:321 - Error removing wallet: Wallet not found
+2025-01-10 00:36:23 - ERROR - cli.py:328 - Error showing error message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:25 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:25 - ERROR - cli.py:316 - Error updating UI after wallet removal: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:26 - ERROR - cli.py:321 - Error removing wallet: Wallet not found
+2025-01-10 00:36:26 - ERROR - cli.py:328 - Error showing error message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:27 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:27 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:27 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:27 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:29 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:36:38 - INFO - cli.py:169 - Creating balance request for rQLhETfZFhm3nmExs9AR3DsApP9pPUzWev
+2025-01-10 00:36:39 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:36:39 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQLhETfZFhm3nmExs9AR3DsApP9pPUzWev",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "BFF3EE72FC3AA8B22EE37E70A281A36725D1562709CA766537CBB0200F8943D4",
+    "PreviousTxnLgrSeq": 3840979,
+    "Sequence": 3840979,
+    "index": "D3E6370ECDEBB084442BE49FCEE0D9CD4846BA4D0DE262F009B968908078B1E4"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "1D122D601386FF09FD01AE2F369190B8B088F6F52DC8F8BB58258F2CD59FD5A6",
+  "ledger_index": 3841239,
+  "validated": true
+}
+2025-01-10 00:36:39 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:36:42 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:36:42 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:36:42 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:36:42 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:36:44 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:47 - INFO - cli.py:169 - Creating balance request for rGR7eSyw1q8iiK6ezuHX1bgjCrYvtFZsQ2
+2025-01-10 00:38:48 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:38:48 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rGR7eSyw1q8iiK6ezuHX1bgjCrYvtFZsQ2",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "3EDBE8090E7A5A2651F328973AD0034A28F5E3CA41BB40C80DA72DFC68A632AA",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "57D6BE59A64578CE2333AE917C1B455C9D42C9180DD082283A8B181F2D1A12AC"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "121C4F022BE0997D2C513DD65DCBA80F096035CDD760F55479C3B9DC2766619A",
+  "ledger_index": 3841279,
+  "validated": true
+}
+2025-01-10 00:38:48 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:38:51 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:51 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:52 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:52 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:53 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:53 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:54 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:54 - ERROR - cli.py:276 - Error updating UI after wallet switch: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:56 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:38:59 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:00 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:00 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:00 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:00 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:01 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:01 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:01 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:02 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:02 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:02 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:02 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:03 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:03 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:12 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:18 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:18 - ERROR - cli.py:451 - Error showing creating message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:19 - INFO - cli.py:465 - Wallet generated: rPt9TVgC3L2MZA1M9fwoUhYi4XCQQN8vqT
+2025-01-10 00:39:19 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:19 - ERROR - cli.py:476 - Error updating UI after wallet generation: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:20 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:21 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:22 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:23 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:23 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:24 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:24 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:24 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:24 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:24 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:24 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:31 - ERROR - cli.py:451 - Error showing creating message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:32 - INFO - cli.py:465 - Wallet generated: rMvRgPBaKQ3XUV3ve9FhwWohM3cLpuqpFA
+2025-01-10 00:39:32 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:32 - ERROR - cli.py:476 - Error updating UI after wallet generation: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:32 - ERROR - cli.py:451 - Error showing creating message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:33 - INFO - cli.py:465 - Wallet generated: rHEBbDneya9CREgqTaRdgNV1MFmCKhF8Ge
+2025-01-10 00:39:33 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:33 - ERROR - cli.py:476 - Error updating UI after wallet generation: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:34 - ERROR - cli.py:451 - Error showing creating message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:34 - INFO - cli.py:465 - Wallet generated: rpe3CvnGCbW5dJhapSUGGoFXeRfjAvHZPu
+2025-01-10 00:39:34 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:34 - ERROR - cli.py:476 - Error updating UI after wallet generation: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:35 - ERROR - cli.py:628 - Error showing fetching message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:39:37 - ERROR - cli.py:649 - Error showing no NFTs message: No nodes match '#result-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 00:54:57 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:54:58 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:54:58 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "D225AD6A9E218FA3EBD44A17C414CD89DDD444AB6EBEB3E18163BA3AE03A8FAF",
+  "ledger_index": 3841574,
+  "validated": true
+}
+2025-01-10 00:54:58 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:02 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:55:02 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:55:03 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:55:03 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "7376CF9DB3D02846BEB5A6D4D8BD2CA1FD46D5753345D92FC25F0BD384769F86",
+  "ledger_index": 3841576,
+  "validated": true
+}
+2025-01-10 00:55:03 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:03 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:55:03 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "7376CF9DB3D02846BEB5A6D4D8BD2CA1FD46D5753345D92FC25F0BD384769F86",
+  "ledger_index": 3841576,
+  "validated": true
+}
+2025-01-10 00:55:03 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:11 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:55:11 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:55:12 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:55:12 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "B0DB5E6610B9B39076E0536841A0C1D892E84B12CE0EA1378534F06B3CFB2364",
+  "ledger_index": 3841578,
+  "validated": true
+}
+2025-01-10 00:55:12 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:12 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:55:12 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "B0DB5E6610B9B39076E0536841A0C1D892E84B12CE0EA1378534F06B3CFB2364",
+  "ledger_index": 3841578,
+  "validated": true
+}
+2025-01-10 00:55:12 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:15 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:55:15 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:55:16 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:55:16 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "E0039AD7897E3C77E37FF243CCB41993DEE54BA4825134CE72ACE3DCB570CEE4",
+  "ledger_index": 3841580,
+  "validated": true
+}
+2025-01-10 00:55:16 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:17 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:55:17 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "E0039AD7897E3C77E37FF243CCB41993DEE54BA4825134CE72ACE3DCB570CEE4",
+  "ledger_index": 3841580,
+  "validated": true
+}
+2025-01-10 00:55:17 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:17 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:55:18 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:55:18 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "E0039AD7897E3C77E37FF243CCB41993DEE54BA4825134CE72ACE3DCB570CEE4",
+  "ledger_index": 3841580,
+  "validated": true
+}
+2025-01-10 00:55:18 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 00:55:18 - ERROR - cli.py:192 - Error getting balance: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 00:56:40 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 00:56:41 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 00:56:41 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "FF8F04204538A1D4252592FA2BE916D561BF21D5D05344D945F9622AFD0C5DEE",
+  "ledger_index": 3841605,
+  "validated": true
+}
+2025-01-10 00:56:41 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:00:42 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:00:43 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:00:43 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "D4826FE6F2708364A64FA411550EF0A63BE9964EC458E04470AA5A8D976226F4",
+  "ledger_index": 3841678,
+  "validated": true
+}
+2025-01-10 01:00:43 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:01:37 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:01:38 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:01:38 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "9F8E153CB43F9186474BD381801F4FC515D59379ED76C85BFB208789D6CF5252",
+  "ledger_index": 3841695,
+  "validated": true
+}
+2025-01-10 01:01:38 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:03:07 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:03:09 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:03:09 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "1A9FA68263480078DBB478BEB44849F84CE34571411FD5B02852A7AC043B6406",
+  "ledger_index": 3841721,
+  "validated": true
+}
+2025-01-10 01:03:09 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:03:09 - ERROR - cli.py:192 - Error getting balance: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:04:33 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:04:34 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:04:34 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "BB031C7FE0E6FBCBEE1BFE56920FC71FA5AD2038314C543179291BEE4B26A969",
+  "ledger_index": 3841746,
+  "validated": true
+}
+2025-01-10 01:04:34 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:04:34 - ERROR - cli.py:187 - Error updating wallet display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:04:42 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:04:42 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:04:43 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:04:43 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "1479ECDDB62C15685043CD6A6DC14F07ED1CDADBB2125989B841448C272E9408",
+  "ledger_index": 3841749,
+  "validated": true
+}
+2025-01-10 01:04:43 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:04:43 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:04:43 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "1479ECDDB62C15685043CD6A6DC14F07ED1CDADBB2125989B841448C272E9408",
+  "ledger_index": 3841749,
+  "validated": true
+}
+2025-01-10 01:04:43 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:04:48 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:04:48 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:04:49 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:04:49 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "797FBDFC9C24F99A7A0B1E051C68CE9083B6B5F41AE46997C7CE9AD525CF4335",
+  "ledger_index": 3841751,
+  "validated": true
+}
+2025-01-10 01:04:49 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:04:49 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:04:49 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "100000000",
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "OwnerCount": 0,
+    "PreviousTxnID": "2BB77AE89FEBB87405BF932A18DD612F290A54829E8BD4267539BC409B4410DE",
+    "PreviousTxnLgrSeq": 3841015,
+    "Sequence": 3841015,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "797FBDFC9C24F99A7A0B1E051C68CE9083B6B5F41AE46997C7CE9AD525CF4335",
+  "ledger_index": 3841751,
+  "validated": true
+}
+2025-01-10 01:04:49 - INFO - cli.py:180 - Balance fetched: 100.0 XRP
+2025-01-10 01:05:17 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:05:17 - INFO - cli.py:533 - Got sequence number: 3841015
+2025-01-10 01:05:19 - INFO - cli.py:586 - Submitting transaction with sequence 3841015
+2025-01-10 01:06:35 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:06:35 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:06:36 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:06:36 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "FDCFC0F300F11805ACCC4B277CAB8B8118A4D576EF35532F36ED8A3C89CD9BB3",
+  "ledger_index": 3841782,
+  "validated": true
+}
+2025-01-10 01:06:36 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:06:36 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:06:36 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "FDCFC0F300F11805ACCC4B277CAB8B8118A4D576EF35532F36ED8A3C89CD9BB3",
+  "ledger_index": 3841782,
+  "validated": true
+}
+2025-01-10 01:06:36 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:06:39 - ERROR - cli.py:187 - Error updating wallet display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:39 - ERROR - cli.py:187 - Error updating wallet display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:50 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:51 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:55 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:55 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:56 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:56 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:56 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:56 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:06:59 - ERROR - cli.py:154 - Error refreshing display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:07:03 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:07:04 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:07:04 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "CFD14AC1FD29306721E73360A75E36DD89DF8B0B51C850F4061EBE372E0BF838",
+  "ledger_index": 3841790,
+  "validated": true
+}
+2025-01-10 01:07:04 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:09:54 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:09:55 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:09:55 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "17ACDC15232E4E60EB72D517880BD8E3DEC0C14B4C4B26D149B306443F920D2F",
+  "ledger_index": 3841839,
+  "validated": true
+}
+2025-01-10 01:09:55 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:09:58 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:09:59 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:09:59 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "5337678BD9C05F846FC1B44425F5342D90973B96B0CB92DB4A233511F3EB9BAD",
+  "ledger_index": 3841840,
+  "validated": true
+}
+2025-01-10 01:09:59 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:13:22 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:13:23 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:13:23 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "2358A83EC3A0B5F6926BDE611CADC44AE32E4222BF2B08B92FF9B55C920456A1",
+  "ledger_index": 3841900,
+  "validated": true
+}
+2025-01-10 01:13:23 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:13:23 - ERROR - cli.py:187 - Error updating wallet display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'})
+2025-01-10 01:18:13 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:18:14 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:18:14 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "4A832F6BA7AF96DBCDAAE869BE1A61C6F01BCFA19E417C7F56346B9CA5BC455C",
+  "ledger_index": 3841985,
+  "validated": true
+}
+2025-01-10 01:18:14 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:21:59 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:22:00 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:22:00 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "18E9A164C4717A7B5EB7C294E532A38567BC67122F34A230AA2D2C419F8B4B17",
+  "ledger_index": 3842051,
+  "validated": true
+}
+2025-01-10 01:22:00 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:29:36 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:29:37 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:29:37 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "7E11CFC98681E0F938C1C024C1396EE40ADC99C160579E2771733AEB5EF871F2",
+  "ledger_index": 3842186,
+  "validated": true
+}
+2025-01-10 01:29:37 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:29:37 - INFO - screens.py:466 - TransferScreen mounted, loading NFTs...
+2025-01-10 01:29:37 - INFO - screens.py:473 - Fetching NFTs from backend...
+2025-01-10 01:29:39 - INFO - screens.py:478 - Response status code: 200
+2025-01-10 01:29:39 - INFO - screens.py:496 - Found 1 NFTs
+2025-01-10 01:29:40 - INFO - screens.py:468 - Finished initial NFT loading
+2025-01-10 01:29:55 - INFO - screens.py:466 - TransferScreen mounted, loading NFTs...
+2025-01-10 01:29:55 - INFO - screens.py:473 - Fetching NFTs from backend...
+2025-01-10 01:29:58 - INFO - screens.py:478 - Response status code: 200
+2025-01-10 01:29:58 - INFO - screens.py:496 - Found 1 NFTs
+2025-01-10 01:29:58 - INFO - screens.py:468 - Finished initial NFT loading
+2025-01-10 01:30:24 - INFO - screens.py:466 - TransferScreen mounted, loading NFTs...
+2025-01-10 01:30:24 - INFO - screens.py:473 - Fetching NFTs from backend...
+2025-01-10 01:30:26 - INFO - screens.py:478 - Response status code: 200
+2025-01-10 01:30:26 - INFO - screens.py:496 - Found 1 NFTs
+2025-01-10 01:30:26 - INFO - screens.py:468 - Finished initial NFT loading
+2025-01-10 01:35:14 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:35:15 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:35:15 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "BB43094ABC20062ADBC3209010CDFBD44C798CDBD822415781F6B3E668F4432A",
+  "ledger_index": 3842284,
+  "validated": true
+}
+2025-01-10 01:35:15 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:35:17 - INFO - screens.py:486 - TransferScreen mounted, loading NFTs...
+2025-01-10 01:35:17 - INFO - screens.py:504 - Fetching NFTs from backend...
+2025-01-10 01:35:20 - INFO - screens.py:509 - Response status code: 200
+2025-01-10 01:35:20 - INFO - screens.py:536 - Found 1 NFTs
+2025-01-10 01:40:22 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:40:23 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:40:23 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "5BD9E5F78CAFC0DF767A4CD48F1DF51E1EB1CC40C6827D4E32D70EE065EE4094",
+  "ledger_index": 3842376,
+  "validated": true
+}
+2025-01-10 01:40:23 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:40:24 - INFO - screens.py:487 - TransferScreen mounted, loading NFTs...
+2025-01-10 01:40:24 - INFO - screens.py:505 - Fetching NFTs from backend...
+2025-01-10 01:40:26 - INFO - screens.py:510 - Response status code: 200
+2025-01-10 01:40:26 - INFO - screens.py:537 - Found 1 NFTs
+2025-01-10 01:58:50 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 01:58:51 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 01:58:51 - INFO - screens.py:487 - TransferScreen mounted, loading NFTs...
+2025-01-10 01:58:51 - INFO - screens.py:510 - Fetching NFTs from backend...
+2025-01-10 01:58:51 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "622E0485FA4A40EEA5BC3AB788392E5CC452EDC3CD6FEDF27AB4706104F1E763",
+  "ledger_index": 3842703,
+  "validated": true
+}
+2025-01-10 01:58:51 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 01:58:53 - INFO - screens.py:515 - Response status code: 200
+2025-01-10 01:58:53 - INFO - screens.py:525 - Full response data: {'address': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'count': 1, 'nfts': [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]}
+2025-01-10 01:58:53 - INFO - screens.py:535 - Found 1 NFTs
+2025-01-10 01:58:53 - INFO - screens.py:536 - NFTs data: [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]
+2025-01-10 01:58:53 - INFO - screens.py:548 - Processing NFT: {'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}
+2025-01-10 01:58:53 - INFO - screens.py:562 - NFT metadata: {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}
+2025-01-10 01:58:54 - ERROR - cli.py:187 - Error updating wallet display: No nodes match '#wallet-display' on NFTApp(title='NFTApp', classes={'-dark-mode'}, pseudo_classes={'focus', 'dark'})
+2025-01-10 01:59:10 - INFO - screens.py:487 - TransferScreen mounted, loading NFTs...
+2025-01-10 01:59:10 - INFO - screens.py:510 - Fetching NFTs from backend...
+2025-01-10 01:59:12 - INFO - screens.py:515 - Response status code: 200
+2025-01-10 01:59:12 - INFO - screens.py:525 - Full response data: {'address': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'count': 1, 'nfts': [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]}
+2025-01-10 01:59:12 - INFO - screens.py:535 - Found 1 NFTs
+2025-01-10 01:59:12 - INFO - screens.py:536 - NFTs data: [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]
+2025-01-10 01:59:12 - INFO - screens.py:548 - Processing NFT: {'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}
+2025-01-10 01:59:12 - INFO - screens.py:562 - NFT metadata: {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}
+2025-01-10 02:01:53 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 02:01:54 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 02:01:54 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "914F9F19D785C50D4042609FB6D108FC4E276D38A8941923B1EE842B086E6F63",
+  "ledger_index": 3842758,
+  "validated": true
+}
+2025-01-10 02:01:54 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 02:01:55 - INFO - screens.py:487 - TransferScreen mounted, loading NFTs...
+2025-01-10 02:01:55 - INFO - screens.py:510 - Fetching NFTs from backend...
+2025-01-10 02:01:58 - INFO - screens.py:515 - Response status code: 200
+2025-01-10 02:01:58 - INFO - screens.py:524 - Full response data: {'address': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'count': 1, 'nfts': [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]}
+2025-01-10 02:01:58 - INFO - screens.py:534 - Found 1 NFTs
+2025-01-10 02:01:58 - INFO - screens.py:535 - NFTs data: [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]
+2025-01-10 02:01:58 - INFO - screens.py:547 - Processing NFT: {'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}
+2025-01-10 02:01:58 - INFO - screens.py:561 - NFT metadata: {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}
+2025-01-10 02:02:16 - INFO - screens.py:487 - TransferScreen mounted, loading NFTs...
+2025-01-10 02:02:16 - INFO - screens.py:510 - Fetching NFTs from backend...
+2025-01-10 02:02:18 - INFO - screens.py:515 - Response status code: 200
+2025-01-10 02:02:18 - INFO - screens.py:524 - Full response data: {'address': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'count': 1, 'nfts': [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]}
+2025-01-10 02:02:18 - INFO - screens.py:534 - Found 1 NFTs
+2025-01-10 02:02:18 - INFO - screens.py:535 - NFTs data: [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]
+2025-01-10 02:02:18 - INFO - screens.py:547 - Processing NFT: {'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}
+2025-01-10 02:02:18 - INFO - screens.py:561 - NFT metadata: {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}
+2025-01-10 02:07:29 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 02:07:30 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 02:07:30 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "990DD5E31CE60B1DA400E82288C125CC1A306727AB3C091D400E2515239AE2A4",
+  "ledger_index": 3842859,
+  "validated": true
+}
+2025-01-10 02:07:30 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 02:07:30 - INFO - screens.py:485 - TransferScreen mounted, loading NFTs...
+2025-01-10 02:07:30 - INFO - screens.py:508 - Fetching NFTs from backend...
+2025-01-10 02:07:33 - INFO - screens.py:513 - Response status code: 200
+2025-01-10 02:07:33 - INFO - screens.py:522 - Full response data: {'address': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'count': 1, 'nfts': [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]}
+2025-01-10 02:07:33 - INFO - screens.py:532 - Found 1 NFTs
+2025-01-10 02:07:33 - INFO - screens.py:533 - NFTs data: [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]
+2025-01-10 02:07:33 - INFO - screens.py:545 - Processing NFT: {'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}
+2025-01-10 02:07:33 - INFO - screens.py:559 - NFT metadata: {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}
+2025-01-10 02:07:44 - INFO - screens.py:485 - TransferScreen mounted, loading NFTs...
+2025-01-10 02:07:44 - INFO - screens.py:508 - Fetching NFTs from backend...
+2025-01-10 02:07:47 - INFO - screens.py:513 - Response status code: 200
+2025-01-10 02:07:47 - INFO - screens.py:522 - Full response data: {'address': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'count': 1, 'nfts': [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]}
+2025-01-10 02:07:47 - INFO - screens.py:532 - Found 1 NFTs
+2025-01-10 02:07:47 - INFO - screens.py:533 - NFTs data: [{'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}]
+2025-01-10 02:07:47 - INFO - screens.py:545 - Processing NFT: {'account': 'rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c', 'created_at': 'Fri, 10 Jan 2025 00:05:22 GMT', 'metadata': {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}, 'metadata_verified': True, 'nft_id': '7678fdbf-b51c-4e46-9a77-81d106b6e9cc', 'status': 'minted', 'transaction_hash': 'E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9', 'uri': 'ipfs://QmRWA354ee7cde5984b81982b2e626371a167'}
+2025-01-10 02:07:47 - INFO - screens.py:559 - NFT metadata: {'asset_type': 'Real Estate', 'created_at': '2025-01-10 01:05:16.563372', 'description': 'Tahia Dz boumedienne', 'documentation_id': 'Legal Wllh', 'location': 'Ici au tieks', 'title': 'Ma Maison', 'type': 'RWA'}
+2025-01-10 14:32:37 - INFO - cli.py:169 - Creating balance request for rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c
+2025-01-10 14:32:38 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 14:32:38 - INFO - cli.py:172 - Raw response: {
+  "account_data": {
+    "Account": "rQppuZh9YxbYRnAkjhaTx4VCeMcFKftT2c",
+    "Balance": "99999990",
+    "FirstNFTokenSequence": 3841015,
+    "Flags": 0,
+    "LedgerEntryType": "AccountRoot",
+    "MintedNFTokens": 1,
+    "OwnerCount": 1,
+    "PreviousTxnID": "E8BBB16E802D2F170421399A5BF7D6C8636E851EC8A113B78590391B09F421F9",
+    "PreviousTxnLgrSeq": 3841762,
+    "Sequence": 3841016,
+    "index": "A07248CCD18D1FBB8EF3204E07DA79C767E913FB71E7F991410AA5A9890BD1D7"
+  },
+  "account_flags": {
+    "allowTrustLineClawback": false,
+    "defaultRipple": false,
+    "depositAuth": false,
+    "disableMasterKey": false,
+    "disallowIncomingCheck": false,
+    "disallowIncomingNFTokenOffer": false,
+    "disallowIncomingPayChan": false,
+    "disallowIncomingTrustline": false,
+    "disallowIncomingXRP": false,
+    "globalFreeze": false,
+    "noFreeze": false,
+    "passwordSpent": false,
+    "requireAuthorization": false,
+    "requireDestinationTag": false
+  },
+  "ledger_hash": "EA19164839723B2C57116A434C917C9402F271A7A3E926DE6A269173B56B7BF5",
+  "ledger_index": 3856256,
+  "validated": true
+}
+2025-01-10 14:32:38 - INFO - cli.py:180 - Balance fetched: 99.99999 XRP
+2025-01-10 14:32:50 - INFO - _client.py:1729 - HTTP Request: POST https://s.altnet.rippletest.net:51234 "HTTP/1.1 200 OK"
+2025-01-10 14:32:50 - INFO - cli.py:533 - Got sequence number: 3841016
+2025-01-10 14:32:52 - INFO - cli.py:586 - Submitting transaction with sequence 3841016
