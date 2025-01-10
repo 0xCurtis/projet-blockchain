@@ -1,13 +1,11 @@
 """XRPL service for transaction handling"""
 from typing import Dict, Any, Optional
 import xrpl
-import json
 from xrpl.clients import JsonRpcClient
-from xrpl.models.transactions import NFTokenMint, Payment, NFTokenCreateOffer
-from xrpl.models.requests import SubmitOnly
-from xrpl.utils import str_to_hex
+from xrpl.models.requests import AccountNFTs, Tx
 import os
-from .mongodb_service import track_nft_mint
+from xrpl.models.transactions import NFTokenMint, Payment, NFTokenCreateOffer
+from xrpl.utils import str_to_hex
 
 def get_client() -> JsonRpcClient:
     """Get XRPL client"""
@@ -113,7 +111,7 @@ def create_nft_sell_offer_template(
     expiration: Optional[int] = None,
     destination: Optional[str] = None
 ) -> Dict[str, Any]:
-    """Generate an unsigned NFTokenCreateOffer transaction template for selling an NFT
+    """Generate an NFTokenCreateOffer transaction template for selling an NFT
     
     Args:
         account: The address of the NFT owner
@@ -123,85 +121,69 @@ def create_nft_sell_offer_template(
         destination: Optional specific address that can buy the NFT
     """
     try:
-        # Create the NFTokenCreateOffer transaction
-        offer_tx = NFTokenCreateOffer(
-            account=account,
-            nftoken_id=nft_id,
-            amount=amount,
-            flags=1  # Flag 1 indicates a sell offer
-        )
+        # Create the transaction template with proper XRPL field names
+        template = {
+            "TransactionType": "NFTokenCreateOffer",
+            "Account": account,
+            "NFTokenID": nft_id,
+            "Amount": amount,
+            "Flags": 1  # Flag 1 indicates a sell offer
+        }
         
         # Add optional fields if provided
         if expiration:
-            offer_tx.expiration = expiration
+            template["Expiration"] = expiration
         if destination:
-            offer_tx.destination = destination
+            template["Destination"] = destination
         
-        # Convert to dictionary for JSON serialization
         return {
-            "transaction_type": "NFTokenCreateOffer",
-            "template": offer_tx.to_dict(),
-            "instructions": {
-                "fee": "10",  # Standard fee in drops
-                "sequence": None,  # Client needs to set this
-                "last_ledger_sequence": None  # Client needs to set this
-            }
+            "txjson": template  # Use txjson as expected by XUMM
         }
     except Exception as e:
         raise ValueError(f"Failed to generate NFT sell offer template: {str(e)}")
 
-def submit_signed_transaction(
-    signed_tx: Dict[str, Any],
-    account: str,
-    destination: str = None,
-    uri: str = None,
-    metadata: Dict[str, Any] = None
-) -> Dict[str, Any]:
-    """Submit a signed transaction to the XRPL"""
+def verify_xrpl_transaction(transaction_hash: str, expected_type: str = None) -> Dict[str, Any]:
+    """Verify a transaction on the XRPL"""
     try:
-        client: JsonRpcClient = get_client()
+        client = get_client()
         
-        # Print the signed transaction for debugging
-        print("Signed transaction:", json.dumps(signed_tx, indent=2))
+        # Get transaction details
+        tx_response = client.request(xrpl.models.requests.Tx(
+            transaction=transaction_hash
+        ))
         
-        # Get the tx_blob from the signed transaction
-        tx_blob = signed_tx.get("tx_blob") if isinstance(signed_tx, dict) else xrpl.core.binarycodec.encode(signed_tx)
-        
-        # Create a proper submit request
-        submit = SubmitOnly(tx_blob=tx_blob)
-        
-        # Submit the transaction
-        response = client.request(submit)
-        print("XRPL Response:", json.dumps(response.result, indent=2))
-        
-        if response.status == "success" and response.result.get("engine_result") == "tesSUCCESS":
-            transaction_hash = response.result.get("tx_json", {}).get("hash")
-            
-            # Only track in MongoDB if this is an NFT mint transaction
-            if uri and metadata:
-                track_nft_mint(
-                    account=account,
-                    uri=uri,
-                    transaction_hash=transaction_hash,
-                    metadata=metadata
-                )
-            
+        if not tx_response.is_successful():
             return {
-                "status": "success",
-                "hash": transaction_hash,
-                "engine_result": response.result.get("engine_result"),
-                "engine_result_message": response.result.get("engine_result_message")
+                "success": False,
+                "message": "Failed to fetch transaction"
             }
-        else:
-            error_message = (
-                response.result.get("engine_result_message") or 
-                response.result.get("error_message") or 
-                "Unknown error"
-            )
-            raise ValueError(f"Transaction submission failed: {error_message}")
             
+        tx_data = tx_response.result
+        
+        # Verify transaction type if specified
+        if expected_type and tx_data.get("TransactionType") != expected_type:
+            return {
+                "success": False,
+                "message": f"Transaction type mismatch. Expected {expected_type}"
+            }
+            
+        # Check if transaction was successful
+        if tx_data.get("meta", {}).get("TransactionResult") != "tesSUCCESS":
+            return {
+                "success": False,
+                "message": "Transaction was not successful"
+            }
+            
+        return {
+            "success": True,
+            "transaction": tx_data
+        }
+        
     except Exception as e:
-        raise ValueError(f"Failed to submit transaction: {str(e)}")
+        return {
+            "success": False,
+            "message": f"Failed to verify transaction: {str(e)}"
+        }
 
 def verify_nft_ownership(account: str, nft_id: str) -> bool:
     """Verify if an account owns a specific NFT."""

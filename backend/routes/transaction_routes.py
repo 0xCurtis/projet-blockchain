@@ -1,21 +1,21 @@
-"""Transaction routes for NFT operations"""
+"""Transaction routes for handling XRPL transactions"""
 from typing import Tuple
 from flask import Blueprint, jsonify, request, Response
 from backend.services.xrpl_service import (
     generate_nft_mint_template,
-    submit_signed_transaction,
-    verify_transaction_signature
+    verify_xrpl_transaction,
 )
 from backend.services.mongodb_service import (
     get_account_nfts,
     get_metadata_by_hash,
     get_metadata_by_id,
-    compute_metadata_hash
-)
+    compute_metadata_hash,
+    track_nft_mint
+) 
 import os
-import json
+import json 
 
-bp = Blueprint('transaction', __name__, url_prefix='/api/transaction')
+bp = Blueprint('transactions', __name__, url_prefix='/api/transactions')
 
 # Get the API endpoint from environment or use default
 API_ENDPOINT = os.getenv("API_ENDPOINT", "http://localhost:5000/api/transaction")
@@ -99,35 +99,46 @@ def get_metadata_by_id_route(metadata_id: str) -> Tuple[Response, int]:
 
 @bp.route('/submit', methods=['POST'])
 def submit_transaction() -> Tuple[Response, int]:
-    """Submit a signed transaction"""
+    """Submit a signed transaction from XUMM"""
     try:
         data = request.get_json()
         
         # Validate required fields
-        if not data.get('signed_transaction'):
-            return jsonify({'error': 'signed_transaction is required'}), 400
-        if not data.get('account'):
-            return jsonify({'error': 'account is required'}), 400
-        if not data.get('uri'):
-            return jsonify({'error': 'uri is required'}), 400
+        if not data.get('response'):
+            return jsonify({'error': 'XUMM response is required'}), 400
             
-        # Verify the transaction signature if provided in the correct format
-        if isinstance(data.get('signed_transaction'), dict):
-            if not verify_transaction_signature(data['signed_transaction']):
-                return jsonify({'error': 'Invalid transaction signature'}), 400
+        xumm_response = data['response']
+        if not xumm_response.get('txid'):
+            return jsonify({'error': 'Transaction ID not found in XUMM response'}), 400
             
-        # Submit the transaction
-        result = submit_signed_transaction(
-            data['signed_transaction'],
-            account=data['account'],
-            uri=data['uri'],
-            metadata=data.get('metadata', {})
+        # Verify the transaction on XRPL
+        tx_result = verify_xrpl_transaction(
+            transaction_hash=xumm_response['txid']
         )
         
+        if not tx_result['success']:
+            return jsonify({
+                'status': 'error',
+                'message': tx_result['message']
+            }), 400
+            
+        # If this is an NFT mint, track it
+        if (tx_result['transaction'].get('TransactionType') == 'NFTokenMint' 
+            and data.get('uri') and data.get('metadata')):
+            track_nft_mint(
+                account=xumm_response['account'],
+                uri=data['uri'],
+                transaction_hash=xumm_response['txid'],
+                metadata=data['metadata']
+            )
+            
         return jsonify({
-            'result': result,
+            'status': 'success',
+            'transaction_hash': xumm_response['txid'],
+            'transaction_result': tx_result['transaction'],
             'message': 'Transaction submitted successfully'
         }), 200
+            
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
     except Exception as e:

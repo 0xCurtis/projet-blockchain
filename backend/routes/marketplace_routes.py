@@ -14,7 +14,8 @@ from backend.services.xrpl_service import (
     create_nft_offer_template,
     submit_signed_transaction,
     verify_nft_ownership,
-    create_nft_sell_offer_template
+    create_nft_sell_offer_template,
+    verify_xrpl_transaction
 )
 from datetime import datetime
 
@@ -312,33 +313,48 @@ def submit_sell_offer() -> Tuple[Response, int]:
     try:
         data = request.get_json()
         
-        if not data.get('signed_transaction'):
-            return jsonify({'error': 'signed_transaction is required'}), 400
+        # Validate required fields
+        if not data.get('response'):
+            return jsonify({'error': 'XUMM response is required'}), 400
+        if not data.get('nft_id'):
+            return jsonify({'error': 'nft_id is required'}), 400
+        if not data.get('amount'):
+            return jsonify({'error': 'amount is required'}), 400
             
-        # Submit the signed transaction to XRPL
-        result = submit_signed_transaction(data['signed_transaction'])
+        xumm_response = data['response']
+        if not xumm_response.get('txid'):
+            return jsonify({'error': 'Transaction ID not found in XUMM response'}), 400
+            
+        # Verify the transaction on XRPL
+        tx_result = verify_xrpl_transaction(
+            transaction_hash=xumm_response['txid'],
+            expected_type="NFTokenCreateOffer"
+        )
         
-        if result['status'] == 'success':
-            # Track the offer in our database
-            offer_data = {
-                'transaction_hash': result['hash'],
-                'nft_id': data['nft_id'],
-                'seller_address': data['seller_address'],
-                'price_drops': data['amount'],
-                'status': 'active'
-            }
-            track_nft_offer(offer_data)
-            
+        if not tx_result['success']:
             return jsonify({
-                'status': 'success',
-                'transaction_hash': result['hash'],
-                'message': 'NFT offer created successfully'
-            }), 200
-        else:
-            return jsonify({
-                'error': 'Failed to submit offer',
-                'details': result
+                'status': 'error',
+                'message': tx_result['message']
             }), 400
+            
+        # Track the offer in our database
+        offer_data = {
+            'transaction_hash': xumm_response['txid'],
+            'nft_id': data['nft_id'],
+            'seller_address': xumm_response['account'],
+            'price_drops': data['amount'],
+            'status': 'active',
+            'offer_id': tx_result['transaction'].get('NFTokenOfferID', '')  # Store the offer ID from XRPL
+        }
+        
+        tracked_offer = track_nft_offer(offer_data)
+        
+        return jsonify({
+            'status': 'success',
+            'transaction_hash': xumm_response['txid'],
+            'offer_id': offer_data['offer_id'],
+            'message': 'NFT offer created successfully'
+        }), 200
             
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
