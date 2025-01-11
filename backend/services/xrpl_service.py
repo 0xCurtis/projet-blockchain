@@ -231,12 +231,26 @@ def verify_transaction_signature(signed_tx: Dict[str, Any]) -> bool:
     # Skip verification as it will be handled by the XRPL network
     return True
 
+def normalize_hex_uri(uri: str) -> str:
+    """Normalize a hex URI string for comparison
+    
+    Args:
+        uri: The URI string to normalize
+        
+    Returns:
+        Normalized URI in uppercase without any prefix
+    """
+    # Remove any prefix and clean the string
+    clean_uri = uri.replace('0x', '').replace('-', '').strip()
+    # Convert to uppercase for consistent comparison
+    return clean_uri.upper()
+
 def get_nft_id_from_account(account: str, uri: str) -> Optional[str]:
     """Query account's NFTs on XRPL to find NFTokenID by URI
     
     Args:
         account: The account address to query
-        uri: The URI to match against
+        uri: The URI to match against (can be hex or regular string)
         
     Returns:
         The NFTokenID if found, None otherwise
@@ -252,11 +266,17 @@ def get_nft_id_from_account(account: str, uri: str) -> Optional[str]:
         if not response.is_successful():
             raise ValueError("Failed to fetch account NFTs")
             
+        # Normalize the search URI
+        search_uri = normalize_hex_uri(uri)
+        
         # Find NFT with matching URI
         for nft in response.result.get("account_nfts", []):
-            if nft.get("URI") == uri:
-                return nft.get("NFTokenID")
-                
+            if nft.get("URI"):
+                # Normalize the NFT's URI for comparison
+                nft_uri = normalize_hex_uri(nft.get("URI"))
+                if nft_uri == search_uri:
+                    return nft.get("NFTokenID")
+                    
         return None
         
     except Exception as e:
