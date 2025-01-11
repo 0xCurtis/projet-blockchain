@@ -67,7 +67,7 @@ export const MintNFTForm = ({ metadata, setMetadata, handleMintRWANFT, handleMin
           onClick={handleMintRWANFT}
           className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-200 mt-6"
         >
-          Mint RWA NFT
+          Sign transaction
         </button>
         <button
           onClick={handleMintNFT}
