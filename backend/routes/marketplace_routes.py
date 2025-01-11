@@ -131,54 +131,7 @@ def get_buy_template(listing_id: str) -> Tuple[Response, int]:
 @bp.route('/buy/submit/<listing_id>', methods=['POST'])
 def submit_buy_transaction(listing_id: str) -> Tuple[Response, int]:
     """Submit signed transactions for buying an NFT"""
-    try:
-        data = request.get_json()
-        
-        # Validate required fields
-        if not data.get('signed_payment'):
-            return jsonify({'error': 'signed_payment is required'}), 400
-        if not data.get('signed_nft_offer'):
-            return jsonify({'error': 'signed_nft_offer is required'}), 400
-        if not data.get('buyer_address'):
-            return jsonify({'error': 'buyer_address is required'}), 400
-            
-        # Get the listing
-        listing = get_listing(listing_id)
-        if listing['status'] != 'active':
-            return jsonify({'error': 'Listing is not active'}), 400
-            
-        # Verify seller still owns the NFT
-        if not verify_nft_ownership(listing['seller_address'], listing['nft_id']):
-            # Update listing status to indicate NFT was transferred
-            update_listing_status(listing_id, "invalid", reason="NFT no longer owned by seller")
-            return jsonify({'error': 'NFT is no longer owned by the seller'}), 400
-            
-        # Submit payment transaction
-        payment_result = submit_signed_transaction(
-            data['signed_payment'],
-            account=data['buyer_address'],
-            destination=listing['seller_address']
-        )
-        
-        # Submit NFT offer transaction
-        nft_offer_result = submit_signed_transaction(
-            data['signed_nft_offer'],
-            account=listing['seller_address'],
-            destination=data['buyer_address']
-        )
-        
-        # Update listing status
-        update_listing_status(listing_id, "completed", data['buyer_address'])
-        
-        return jsonify({
-            'payment_result': payment_result,
-            'nft_offer_result': nft_offer_result,
-            'message': 'Purchase completed successfully'
-        }), 200
-    except ValueError as e:
-        return jsonify({'error': str(e)}), 400
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    pass
 
 @bp.route('/listing/<listing_id>/prepare-buy', methods=['GET'])
 def prepare_buy_info(listing_id: str) -> Tuple[Response, int]:
