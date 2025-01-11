@@ -1,8 +1,7 @@
-flask==2.3.3
-flask-cors==4.0.0
-pymongo==4.5.0
-python-dotenv==1.0.0
-pytest==7.4.2
-xrpl-py==2.4.0
-requests==2.31.0
-python-dateutil==2.8.2
+backend==0.2.4.1
+Flask==3.1.0
+Flask_Cors==5.0.0
+pymongo==4.10.1
+pytest==8.3.4
+python-dotenv==1.0.1
+setuptools==75.8.0
