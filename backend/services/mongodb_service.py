@@ -100,6 +100,7 @@ def get_metadata_by_id(metadata_id: str) -> Dict[str, Any]:
         # Verify integrity
         metadata_hash = result["metadata_hash"]
         verified = verify_metadata(metadata_hash, result["metadata"])
+
             
         return {
             "metadata": result["metadata"],
@@ -164,12 +165,13 @@ def get_account_nfts(account: str) -> List[Dict[str, Any]]:
             if "metadata" in nft and "metadata_id" in nft["metadata"]:
                 try:
                     metadata_result = get_metadata_by_id(nft["metadata"]["metadata_id"])
-                    nft["full_metadata"] = metadata_result["metadata"]
+                    metadata_hash = nft["metadata"]["metadata_hash"]
+                    nft["metadata"] = metadata_result["metadata"]
+                    nft["metadata"]["metadata_hash"] = metadata_hash
                     nft["metadata_verified"] = metadata_result["verified"]
                 except ValueError:
-                    nft["full_metadata"] = {"error": "Metadata not found"}
+                    nft["metadata"] = {"error": "Metadata not found"}
                     nft["metadata_verified"] = False
-        
         return nfts
     except Exception as e:
         raise ValueError(f"Failed to retrieve NFTs from database: {str(e)}")

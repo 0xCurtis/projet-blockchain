@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ConnectWallet from '~/components/ConnectWallet.jsx';
-import MintNFTForm from '~/components/MintNFTForm.jsx';
-import QRCodeDisplay from '~/components/QRCodeDisplay.jsx';
+import {ConnectWallet} from '~/components/ConnectWallet/index.jsx';
+import {MintNFTForm} from '~/components/MintNFTForm/index.jsx';
+import {QRCodeDisplay} from '~/components/QRCodeDisplay/index.jsx';
 import { API_KEY, API_SECRET } from "~/constants/index.jsx";
 import Api from "~/apiWrapper/index.jsx";
 import { useAddress } from "~/contexts/address/index.jsx";
@@ -28,11 +28,11 @@ export default function Home() {
     location: '',
     type: "RWA",
     createdAt: new Date().toISOString(),
+    image: '',
   });
   const [txid, setTxid] = useState('');
   const [mintUuid, setMintUuid] = useState('');
 
-  // Vérifie si l'utilisateur est déjà connecté
   useEffect(() => {
     const storedAddress = localStorage.getItem("walletAddress");
     if (storedAddress) {
@@ -41,7 +41,7 @@ export default function Home() {
         ...prevMetadata,
         account: storedAddress,
       }));
-      setIsConnected(true); // Considère l'utilisateur comme connecté
+      setIsConnected(true);
     }
   }, [setAddress]);
 
@@ -182,15 +182,6 @@ export default function Home() {
 
     const fetchPayload = async () => {
       try {
-        const response = await axios.get(`/api/v1/platform/payload/${mintUuid}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-Key': API_KEY,
-            'X-API-Secret': API_SECRET,
-            'Accept': 'application/json'
-          },
-        });
-
         const timeoutId2 = setTimeout(async () => {
           try {
             const secondResponse = await axios.get(`/api/v1/platform/payload/${mintUuid}`, {
@@ -209,7 +200,7 @@ export default function Home() {
           } catch (error) {
             console.error('Erreur lors de la deuxième vérification du statut du payload:', error);
           }
-        }, 10000);
+        }, 20000);
 
         return () => {
           clearTimeout(timeoutId2);

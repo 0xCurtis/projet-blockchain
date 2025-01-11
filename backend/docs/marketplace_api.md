@@ -195,7 +195,7 @@ All endpoints may return the following error responses:
 **500 Internal Server Error:**
 ```json
 {
-    "error": "Internal server error message"
+    "error": "Internal server Error message"
 }
 ```
 

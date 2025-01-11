@@ -148,13 +148,11 @@ def get_address_nfts(address: str) -> Tuple[Response, int]:
     try:
         # Get NFTs with metadata already included from MongoDB
         nfts = get_account_nfts(address)
-        
         # Format the response
         formatted_nfts = []
         for nft in nfts:
             # Get metadata with image if available
-            metadata = get_metadata_with_image(nft["metadata_hash"]) if "metadata_hash" in nft else {}
-            
+            metadata = get_metadata_with_image(nft['metadata']["metadata_hash"]) if "metadata_hash" in nft['metadata'] else {}
             formatted_nft = {
                 "nft_id": nft["nft_id"],
                 "account": nft["account"],
