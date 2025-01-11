@@ -11,7 +11,8 @@ from backend.services.mongodb_service import (
     get_metadata_by_id,
     compute_metadata_hash,
     track_nft_mint,
-    get_metadata_with_image
+    get_metadata_with_image,
+    store_metadata
 ) 
 import os
 import json 
