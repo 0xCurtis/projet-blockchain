@@ -439,18 +439,151 @@ def record_purchase_transaction(
         raise ValueError(f"Failed to record purchase transaction: {str(e)}")
 
 def track_nft_offer(offer_data: Dict[str, Any]) -> Dict[str, Any]:
-    """Track an NFT offer in the database"""
+    """Track an NFT offer in the database
+    
+    Args:
+        offer_data: Dictionary containing:
+            - transaction_hash: XRPL transaction hash
+            - nft_id: ID of the NFT being offered
+            - seller_address: Address of the seller
+            - price_drops: Price in drops
+            - status: Offer status
+            - offer_id: XRPL NFTokenOfferID
+            
+    Returns:
+        The stored offer document
+        
+    Raises:
+        ValueError: If storage fails or required fields are missing
+    """
+    try:
+        required_fields = [
+            'transaction_hash', 
+            'nft_id', 
+            'seller_address', 
+            'price_drops', 
+            'status',
+            'offer_id'
+        ]
+        
+        if not all(field in offer_data for field in required_fields):
+            raise ValueError("Missing required fields in offer data")
+            
+        db = get_db()
+        offer_collection = db.nft_offers
+        
+        # Add timestamps
+        offer_data['created_at'] = datetime.utcnow()
+        offer_data['updated_at'] = datetime.utcnow()
+        
+        # Insert the offer
+        result = offer_collection.insert_one(offer_data)
+        
+        # Convert ObjectId to string for JSON serialization
+        offer_data['_id'] = str(result.inserted_id)
+        return offer_data
+        
+    except Exception as e:
+        raise ValueError(f"Failed to track NFT offer: {str(e)}")
+
+def get_active_offers_for_nft(nft_id: str) -> List[Dict[str, Any]]:
+    """Get all active offers for a specific NFT
+    
+    Args:
+        nft_id: The ID of the NFT to get offers for
+        
+    Returns:
+        List of active offer documents
+    """
+    try:
+        db = get_db()
+        offers = list(db.nft_offers.find({
+            "nft_id": nft_id,
+            "status": "active"
+        }))
+        
+        # Convert ObjectIds to strings
+        for offer in offers:
+            offer['_id'] = str(offer['_id'])
+            
+        return offers
+    except Exception as e:
+        raise ValueError(f"Failed to get offers: {str(e)}")
+
+def update_offer_status(
+    offer_id: str,
+    new_status: str,
+    additional_data: Dict[str, Any] = None
+) -> Dict[str, Any]:
+    """Update the status of an NFT offer
+    
+    Args:
+        offer_id: The XRPL NFTokenOfferID
+        new_status: New status for the offer
+        additional_data: Optional additional data to store
+        
+    Returns:
+        Updated offer document
+    """
     try:
         db = get_db()
         offer_collection = db.nft_offers
         
-        offer_data['created_at'] = datetime.utcnow()
-        result = offer_collection.insert_one(offer_data)
+        # Prepare update data
+        update_data = {
+            "status": new_status,
+            "updated_at": datetime.utcnow()
+        }
         
-        offer_data['_id'] = str(result.inserted_id)
-        return offer_data
+        if additional_data:
+            update_data.update(additional_data)
+            
+        # Update the offer
+        result = offer_collection.find_one_and_update(
+            {"offer_id": offer_id},
+            {"$set": update_data},
+            return_document=True
+        )
+        
+        if not result:
+            raise ValueError(f"Offer {offer_id} not found")
+            
+        result['_id'] = str(result['_id'])
+        return result
+        
     except Exception as e:
-        raise ValueError(f"Failed to track NFT offer: {str(e)}")
+        raise ValueError(f"Failed to update offer status: {str(e)}")
+
+# Ensure indexes for offers collection
+def ensure_offer_indexes():
+    """Create indexes for the NFT offers collection"""
+    try:
+        db = get_db()
+        offer_collection = db.nft_offers
+        
+        # Create indexes
+        offer_collection.create_index("offer_id", unique=True)
+        offer_collection.create_index("nft_id")
+        offer_collection.create_index("seller_address")
+        offer_collection.create_index("status")
+        offer_collection.create_index("transaction_hash", unique=True)
+        
+    except Exception as e:
+        raise ValueError(f"Failed to create offer indexes: {str(e)}")
+
+# Add offer indexes to initialization
+def ensure_indexes():
+    """Ensure all required indexes exist in MongoDB"""
+    try:
+        db = get_db()
+        # ... existing indexes ...
+        
+        # Add offer indexes
+        ensure_offer_indexes()
+        
+        return True
+    except Exception as e:
+        raise ValueError(f"Failed to create indexes: {str(e)}")
 
 def store_nft_image(image_data: str) -> str:
     """Store an NFT image in the database.
@@ -529,6 +662,26 @@ def get_metadata_with_image(metadata_hash: str) -> Dict[str, Any]:
         return metadata
     except Exception as e:
         raise ValueError(f"Failed to get metadata: {str(e)}")
+
+def get_all_active_offers() -> List[Dict[str, Any]]:
+    """Get all active NFT offers
+    
+    Returns:
+        List of active offer documents with NFT details
+    """
+    try:
+        db = get_db()
+        offers = list(db.nft_offers.find({
+            "status": "active"
+        }))
+        
+        # Convert ObjectIds to strings for JSON serialization
+        for offer in offers:
+            offer['_id'] = str(offer['_id'])
+            
+        return offers
+    except Exception as e:
+        raise ValueError(f"Failed to get active offers: {str(e)}")
 
 # Create indexes when module is imported
 ensure_indexes() 

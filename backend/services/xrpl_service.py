@@ -105,26 +105,26 @@ def create_nft_offer_template(
         raise ValueError(f"Failed to generate NFT offer template: {str(e)}")
 
 def create_nft_sell_offer_template(
-    account: str,
     nft_id: str,
     amount: str,
     expiration: Optional[int] = None,
     destination: Optional[str] = None
 ) -> Dict[str, Any]:
-    """Generate an NFTokenCreateOffer transaction template for selling an NFT
+    """Generate an NFTokenCreateOffer template for XUMM
     
     Args:
-        account: The address of the NFT owner
         nft_id: The ID of the NFT to sell
         amount: The amount in drops that the NFT is being sold for
         expiration: Optional Unix timestamp when the offer expires
         destination: Optional specific address that can buy the NFT
+        
+    Returns:
+        Dict with txjson field formatted for XUMM
     """
     try:
         # Create the transaction template with proper XRPL field names
         template = {
             "TransactionType": "NFTokenCreateOffer",
-            "Account": account,
             "NFTokenID": nft_id,
             "Amount": amount,
             "Flags": 1  # Flag 1 indicates a sell offer
@@ -143,12 +143,20 @@ def create_nft_sell_offer_template(
         raise ValueError(f"Failed to generate NFT sell offer template: {str(e)}")
 
 def verify_xrpl_transaction(transaction_hash: str, expected_type: str = None) -> Dict[str, Any]:
-    """Verify a transaction on the XRPL"""
+    """Verify a transaction on the XRPL and get its details
+    
+    Args:
+        transaction_hash: The hash of the transaction to verify
+        expected_type: Optional expected transaction type to verify
+        
+    Returns:
+        Dict containing success status and transaction details
+    """
     try:
         client = get_client()
         
         # Get transaction details
-        tx_response = client.request(xrpl.models.requests.Tx(
+        tx_response = client.request(Tx(
             transaction=transaction_hash
         ))
         
@@ -173,6 +181,15 @@ def verify_xrpl_transaction(transaction_hash: str, expected_type: str = None) ->
                 "success": False,
                 "message": "Transaction was not successful"
             }
+            
+        # For NFTokenCreateOffer, extract the NFTokenOfferID
+        if expected_type == "NFTokenCreateOffer":
+            affected_nodes = tx_data.get("meta", {}).get("AffectedNodes", [])
+            for node in affected_nodes:
+                if "CreatedNode" in node:
+                    if node["CreatedNode"].get("LedgerEntryType") == "NFTokenOffer":
+                        tx_data["NFTokenOfferID"] = node["CreatedNode"].get("LedgerIndex")
+                        break
             
         return {
             "success": True,
