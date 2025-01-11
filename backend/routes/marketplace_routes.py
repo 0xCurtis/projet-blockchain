@@ -101,23 +101,36 @@ def create_sell_offer_template() -> Tuple[Response, int]:
 
 @bp.route('/list/submit', methods=['POST'])
 def submit_sell_offer() -> Tuple[Response, int]:
-    """Submit a signed NFTokenCreateOffer transaction"""
+    """Submit a signed NFTokenCreateOffer transaction from XUMM"""
     try:
         data = request.get_json()
         
-        # Validate required fields
-        if not data.get('transaction_hash'):
-            return jsonify({'error': 'transaction_hash is required'}), 400
+        # Validate XUMM response and our NFT ID
+        if not data.get('xumm_response'):
+            return jsonify({'error': 'XUMM response is required'}), 400
         if not data.get('nft_id'):
-            return jsonify({'error': 'nft_id is required'}), 400
-        if not data.get('seller_address'):
-            return jsonify({'error': 'seller_address is required'}), 400
-        if not data.get('amount'):
-            return jsonify({'error': 'amount is required'}), 400
+            return jsonify({'error': 'Database NFT ID is required'}), 400
+            
+        xumm_response = data['xumm_response']
+        if not xumm_response.get('response') or not xumm_response.get('payload'):
+            return jsonify({'error': 'Invalid XUMM response format'}), 400
+            
+        response = xumm_response['response']
+        request_json = xumm_response['payload']['request_json']
+        
+        if not response.get('txid'):
+            return jsonify({'error': 'Transaction ID not found in XUMM response'}), 400
+            
+        # Get NFTokenID and amount from the original request
+        nft_id = request_json.get('NFTokenID')
+        amount = request_json.get('Amount')
+        
+        if not nft_id or not amount:
+            return jsonify({'error': 'Missing NFTokenID or Amount in payload'}), 400
             
         # Verify the transaction on XRPL
         tx_result = verify_xrpl_transaction(
-            transaction_hash=data['transaction_hash'],
+            transaction_hash=response['txid'],
             expected_type="NFTokenCreateOffer"
         )
         
@@ -129,10 +142,10 @@ def submit_sell_offer() -> Tuple[Response, int]:
             
         # Track the offer in our database
         offer_data = {
-            'transaction_hash': data['transaction_hash'],
+            'transaction_hash': response['txid'],
             'nft_id': data['nft_id'],
-            'seller_address': data['seller_address'],
-            'price_drops': data['amount'],
+            'seller_address': response['account'],
+            'price_drops': amount,
             'status': 'active',
             'offer_id': tx_result['transaction'].get('NFTokenOfferID')
         }
@@ -141,7 +154,7 @@ def submit_sell_offer() -> Tuple[Response, int]:
         
         return jsonify({
             'status': 'success',
-            'transaction_hash': data['transaction_hash'],
+            'transaction_hash': response['txid'],
             'offer_id': offer_data['offer_id'],
             'message': 'NFT offer created successfully'
         }), 200
