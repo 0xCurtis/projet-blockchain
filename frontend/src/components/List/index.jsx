@@ -54,11 +54,21 @@ export default function List() {
                 className="p-6 bg-white dark:bg-neutral-700 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 hover:transition-transform"
               >
                 <div className="relative overflow-hidden rounded-lg">
-                  <img
-                    src={nft.metadata.image_url}
-                    alt={nft.metadata.title}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
+                  <div
+                    className="w-full h-48 flex items-center justify-center bg-gray-200 rounded-lg mb-4"
+                    style={{backgroundColor: !nft.metadata.image ? '#f0f0f0' : 'transparent'}}
+                  >
+                    <img
+                      src={nft.metadata.image || ''}
+                      alt={nft.metadata.title}
+                      className="w-full h-full object-cover rounded-lg"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="text-center text-neutral-500 font-bold" style={{display: 'none'}}>No Image</div>
+                  </div>
                   <h2 className="text-2xl font-semibold text-neutral-900 dark:text-white">{nft.metadata.title}</h2>
                 </div>
                 <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
@@ -68,7 +78,7 @@ export default function List() {
                   <p className="mb-2"><strong>Créé le:</strong> {new Date(nft.created_at).toLocaleString()}</p>
                   <p className="mb-4"><strong>Statut:</strong> {nft.status}</p>
                   <a
-                    href={`https://testnet.xrpl.org/transaction/${nft.metadata.minting_transaction}`}
+                    href={`https://testnet.xrpl.org/transactions/${nft.transaction_hash}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:text-blue-800 underline transition-colors duration-300"
