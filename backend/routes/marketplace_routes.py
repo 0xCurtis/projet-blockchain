@@ -10,12 +10,13 @@ from backend.services.mongodb_service import (
     record_purchase_transaction,
     update_nft_ownership,
     get_active_offers_for_nft,
-    get_all_active_offers
+    get_all_active_offers,
 )
 from backend.services.xrpl_service import (
     create_nft_sell_offer_template,
     verify_xrpl_transaction,
-    verify_nft_ownership
+    verify_nft_ownership,
+    get_nft_id_from_account
 )
 from datetime import datetime
 
@@ -56,22 +57,40 @@ def create_sell_offer_template() -> Tuple[Response, int]:
         data = request.get_json()
         
         # Validate required fields
-        if not data.get('nft_id'):
-            return jsonify({'error': 'nft_id is required'}), 400
+        if not data.get('uri'):
+            return jsonify({'error': 'uri is required'}), 400
         if not data.get('price_xrp'):
             return jsonify({'error': 'price_xrp is required'}), 400
+        if not data.get('seller_address'):
+            return jsonify({'error': 'seller_address is required'}), 400
+            
+        # Query XRPL to get NFTokenID
+        nft_id = get_nft_id_from_account(
+            account=data['seller_address'],
+            uri=data['uri']
+        )
+        
+        if not nft_id:
+            return jsonify({'error': 'NFT not found in seller account'}), 404
             
         # Convert XRP to drops
-        amount_drops = int(float(data['price_xrp']) * 1_000_000)
+        try:
+            amount_drops = int(float(data['price_xrp']) * 1_000_000)
+        except ValueError:
+            return jsonify({'error': 'Invalid price format'}), 400
         
         # Create the NFTokenCreateOffer template
-        offer_template = create_nft_sell_offer_template(
-            nft_id=data['nft_id'],
-            amount=str(amount_drops)  # Amount in drops as string
-        )
+        try:
+            offer_template = create_nft_sell_offer_template(
+                nft_id=nft_id,
+                amount=str(amount_drops)  # Amount in drops as string
+            )
+        except ValueError as e:
+            return jsonify({'error': str(e)}), 400
         
         return jsonify({
             'offer_template': offer_template,
+            'nft_id': nft_id,  # Return the NFTokenID for reference
             'message': 'Offer template created successfully'
         }), 200
         

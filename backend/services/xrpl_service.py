@@ -113,7 +113,7 @@ def create_nft_sell_offer_template(
     """Generate an NFTokenCreateOffer template for XUMM
     
     Args:
-        nft_id: The ID of the NFT to sell
+        nft_id: The ID of the NFT to sell (hex string)
         amount: The amount in drops that the NFT is being sold for
         expiration: Optional Unix timestamp when the offer expires
         destination: Optional specific address that can buy the NFT
@@ -230,3 +230,34 @@ def verify_transaction_signature(signed_tx: Dict[str, Any]) -> bool:
     """Verify the signature of a signed transaction"""
     # Skip verification as it will be handled by the XRPL network
     return True
+
+def get_nft_id_from_account(account: str, uri: str) -> Optional[str]:
+    """Query account's NFTs on XRPL to find NFTokenID by URI
+    
+    Args:
+        account: The account address to query
+        uri: The URI to match against
+        
+    Returns:
+        The NFTokenID if found, None otherwise
+    """
+    try:
+        client = get_client()
+        
+        # Get account NFTs
+        response = client.request(AccountNFTs(
+            account=account
+        ))
+        
+        if not response.is_successful():
+            raise ValueError("Failed to fetch account NFTs")
+            
+        # Find NFT with matching URI
+        for nft in response.result.get("account_nfts", []):
+            if nft.get("URI") == uri:
+                return nft.get("NFTokenID")
+                
+        return None
+        
+    except Exception as e:
+        raise ValueError(f"Failed to get NFT ID: {str(e)}")
