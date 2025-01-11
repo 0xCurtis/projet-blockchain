@@ -1,5 +1,5 @@
 """MongoDB service for NFT tracking"""
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 from pymongo import MongoClient
 import os
 from datetime import datetime
@@ -27,22 +27,30 @@ def verify_metadata(metadata_hash: str, metadata: Dict[str, Any]) -> bool:
     computed_hash = compute_metadata_hash(metadata)
     return computed_hash == metadata_hash
 
-def store_metadata(metadata: Dict[str, Any]) -> Tuple[str, str]:
-    """Store metadata and return its hash and ID.
+def store_metadata(metadata: Dict[str, Any], image_data: Optional[str] = None) -> Tuple[str, str]:
+    """Store metadata and optional image, returning hash and ID.
     
+    Args:
+        metadata: Dictionary containing NFT metadata
+        image_data: Optional base64 encoded image string
+        
     Returns:
-        Tuple of (metadata_hash, metadata_id)
-        - metadata_hash: SHA-256 hash of the metadata (stored on-chain)
-        - metadata_id: Database ID for retrieval
+        Tuple[str, str]: (metadata_hash, metadata_id)
+        
+    Raises:
+        ValueError: If storage operation fails
     """
     try:
         db = get_db()
         metadata_collection = db.nft_metadata
-        print(metadata_collection)
-        # Generate a deterministic hash of the metadata
-        metadata_hash = compute_metadata_hash(metadata)
         
-        # Generate unique ID for database storage
+        # Store image if provided
+        if image_data:
+            image_id = store_nft_image(image_data)
+            metadata['image_id'] = image_id
+        
+        # Generate hash and ID
+        metadata_hash = compute_metadata_hash(metadata)
         metadata_id = str(uuid.uuid4())
         
         metadata_doc = {
@@ -52,7 +60,6 @@ def store_metadata(metadata: Dict[str, Any]) -> Tuple[str, str]:
             "created_at": datetime.utcnow()
         }
         
-        # Store with both hash and ID indexes
         metadata_collection.insert_one(metadata_doc)
         return metadata_hash, metadata_id
     except Exception as e:
@@ -308,6 +315,7 @@ def ensure_indexes():
         nft_collection = db.nfts
         metadata_collection = db.nft_metadata
         listing_collection = db.marketplace_listings
+        image_collection = db.nft_images
         
         # Create unique index on nft_id
         nft_collection.create_index("nft_id", unique=True)
@@ -327,6 +335,9 @@ def ensure_indexes():
         listing_collection.create_index("nft_id")
         listing_collection.create_index("seller_address")
         listing_collection.create_index("status")
+        
+        # Create index for images collection
+        image_collection.create_index("image_id", unique=True)
         
         return True
     except Exception as e:
@@ -438,6 +449,84 @@ def track_nft_offer(offer_data: Dict[str, Any]) -> Dict[str, Any]:
         return offer_data
     except Exception as e:
         raise ValueError(f"Failed to track NFT offer: {str(e)}")
+
+def store_nft_image(image_data: str) -> str:
+    """Store an NFT image in the database.
+    
+    Args:
+        image_data: Base64 encoded string of the image
+        
+    Returns:
+        str: The unique image ID for retrieval
+        
+    Raises:
+        ValueError: If image storage fails
+    """
+    try:
+        db = get_db()
+        image_collection = db.nft_images
+        
+        image_id = str(uuid.uuid4())
+        image_doc = {
+            'image_id': image_id,
+            'data': image_data,
+            'created_at': datetime.utcnow()
+        }
+        
+        image_collection.insert_one(image_doc)
+        return image_id
+    except Exception as e:
+        raise ValueError(f"Failed to store image: {str(e)}")
+
+def get_nft_image(image_id: str) -> Optional[str]:
+    """Retrieve an NFT image from the database.
+    
+    Args:
+        image_id: The unique identifier of the image
+        
+    Returns:
+        Optional[str]: Base64 encoded image data if found, None otherwise
+        
+    Raises:
+        ValueError: If database operation fails
+    """
+    try:
+        db = get_db()
+        image_doc = db.nft_images.find_one({'image_id': image_id})
+        return image_doc['data'] if image_doc else None
+    except Exception as e:
+        raise ValueError(f"Failed to retrieve image: {str(e)}")
+
+def get_metadata_with_image(metadata_hash: str) -> Dict[str, Any]:
+    """Retrieve metadata including image data if available.
+    
+    Args:
+        metadata_hash: Hash of the metadata to retrieve
+        
+    Returns:
+        Dict[str, Any]: Metadata with image data if available
+        
+    Raises:
+        ValueError: If metadata not found or retrieval fails
+    """
+    try:
+        db = get_db()
+        metadata_doc = db.nft_metadata.find_one({"metadata_hash": metadata_hash})
+        
+        if not metadata_doc:
+            raise ValueError(f"Metadata not found for hash {metadata_hash}")
+            
+        metadata = metadata_doc["metadata"].copy()
+        
+        # Add image data if present
+        if "image_id" in metadata:
+            image_data = get_nft_image(metadata["image_id"])
+            if image_data:
+                metadata["image"] = image_data
+                
+        return metadata
+    except Exception as e:
+        raise ValueError(f"Failed to get metadata: {str(e)}")
 
 # Create indexes when module is imported
 ensure_indexes() 

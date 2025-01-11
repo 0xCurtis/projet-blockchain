@@ -10,7 +10,8 @@ from backend.services.mongodb_service import (
     get_metadata_by_hash,
     get_metadata_by_id,
     compute_metadata_hash,
-    track_nft_mint
+    track_nft_mint,
+    get_metadata_with_image
 ) 
 import os
 import json 
@@ -22,7 +23,18 @@ API_ENDPOINT = os.getenv("API_ENDPOINT", "http://localhost:5000/api/transaction"
 
 @bp.route('/nft/mint/template', methods=['POST'])
 def get_nft_mint_template() -> Tuple[Response, int]:
-    """Generate an NFT mint transaction template"""
+    """Generate an NFT mint transaction template.
+    
+    Expected request body:
+    {
+        "account": str,          # XRPL account address
+        "metadata": dict,        # NFT metadata
+        "image": str,           # Optional base64 encoded image
+        "transfer_fee": float,   # Optional transfer fee percentage
+        "flags": int,           # Optional flags
+        "taxon": int            # Optional taxon
+    }
+    """
     try:
         data = request.get_json()
         
@@ -32,25 +44,22 @@ def get_nft_mint_template() -> Tuple[Response, int]:
         if not data.get('metadata'):
             return jsonify({'error': 'metadata is required'}), 400
             
-        # Generate a URI that references the metadata
+        # Extract image if present
+        image_data = data.get('image')
         metadata = data.get('metadata', {})
         
-        # Compute metadata hash for the URI
-        metadata_hash = compute_metadata_hash(metadata)
+        # Store metadata and get hash
+        metadata_hash, _ = store_metadata(metadata, image_data)
         
-        # Simple identifier format: RWA-XRPL_REAL_WORLD-{asset_type}-{metadata_hash}
+        # Create URI with metadata hash
         uri = f"RWA-XRPL_REAL_WORLD-{metadata.get('asset_type', 'UNKNOWN')}-{metadata_hash}"
         
-        print("\n=== Debug Info ===")
-        print(f"URI length: {len(uri)}")
-        print(f"URI: {uri}")
-        print(f"Metadata: {json.dumps(metadata, indent=2)}")
-        # check transfer fee
+        # Handle transfer fee
         transfer_fee = data.get('transfer_fee', 0)
         if transfer_fee > 0:
-            # check if transfer fee is a percentage by multiplying by 1000 and be sure it's a int not a float if so round it to the nearest int
-            transfer_fee = int(round(data.get('transfer_fee') * 1000))   
-        # Generate the transaction template
+            transfer_fee = int(round(transfer_fee * 1000))
+            
+        # Generate template
         template = generate_nft_mint_template(
             account=data.get('account'),
             uri=uri,
@@ -59,10 +68,6 @@ def get_nft_mint_template() -> Tuple[Response, int]:
             taxon=data.get('taxon', 0),
             metadata=metadata
         )
-        
-        print("\nTemplate to be sent:")
-        print(json.dumps(template, indent=2))
-        print("=== End Debug Info ===\n")
         
         return jsonify({
             'template': template,
@@ -146,6 +151,9 @@ def get_address_nfts(address: str) -> Tuple[Response, int]:
         # Format the response
         formatted_nfts = []
         for nft in nfts:
+            # Get metadata with image if available
+            metadata = get_metadata_with_image(nft["metadata_hash"]) if "metadata_hash" in nft else {}
+            
             formatted_nft = {
                 "nft_id": nft["nft_id"],
                 "account": nft["account"],
@@ -153,7 +161,7 @@ def get_address_nfts(address: str) -> Tuple[Response, int]:
                 "created_at": nft["created_at"],
                 "status": nft["status"],
                 "uri": nft["uri"],
-                "metadata": nft.get("full_metadata", {}),
+                "metadata": metadata,
                 "metadata_verified": nft.get("metadata_verified", False)
             }
             formatted_nfts.append(formatted_nft)
