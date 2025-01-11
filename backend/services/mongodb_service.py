@@ -632,7 +632,44 @@ def get_nft_image(image_id: str) -> Optional[str]:
     except Exception as e:
         raise ValueError(f"Failed to retrieve image: {str(e)}")
 
-def get_metadata_with_image(metadata_hash: str) -> Dict[str, Any]:
+def get_metadata_with_image_by_id(nft_id: str) -> Dict[str, Any]:
+    """Retrieve metadata including image data if available.
+    
+    Args:
+        nft_id: The ID of the NFT to retrieve metadata for
+        
+    Returns:
+        Dict[str, Any]: Metadata with image data if available
+        
+    Raises:
+        ValueError: If metadata not found or retrieval fails
+    """
+    try:
+        db = get_db()
+        # query the database with the nft_id to get the metadata_hash then query the database with the metadata_hash to get the metadata
+        print(nft_id)
+
+        nft_doc = db.nfts.find_one({"nft_id": nft_id})
+        print(nft_doc)
+        if not nft_doc:
+            raise ValueError(f"nft not found for ID {nft_id}")
+            
+        metadata_doc = db.nft_metadata.find_one({"metadata_hash": nft_doc['metadata']["metadata_hash"]})
+        if not metadata_doc:
+            raise ValueError(f"Metadata not found for hash {nft_doc['metadata']['metadata_hash']}")
+        metadata = metadata_doc["metadata"].copy()
+        
+        # Add image data if present
+        if "image_id" in metadata:
+            image_data = get_nft_image(metadata["image_id"])
+            if image_data:
+                metadata["image"] = image_data
+                
+        return metadata
+    except Exception as e:
+        raise ValueError(f"Failed to get metadata: {str(e)}")
+
+def get_metadata_with_image(metadata_hash: str = None) -> Dict[str, Any]:
     """Retrieve metadata including image data if available.
     
     Args:
@@ -678,6 +715,9 @@ def get_all_active_offers() -> List[Dict[str, Any]]:
         # Convert ObjectIds to strings for JSON serialization
         for offer in offers:
             offer['_id'] = str(offer['_id'])
+            # query the database with the nft_id to get the metadata
+            metadata = get_metadata_with_image_by_id(offer['nft_id'])
+            offer['metadata'] = metadata
             
         return offers
     except Exception as e:

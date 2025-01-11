@@ -4,6 +4,7 @@ import Home from "~/pages/Home/index.jsx";
 import ErrorPage from "~/components/Error/index.jsx";
 import List from "~/components/List/index.jsx";
 import ProtectedRoute from "~/components/protectedRoute";
+import Marketplace from "~/components/Marketplace/index.jsx";
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     element: <List />,
     protected: false,
   },
+  {
+    path: "/Marketplace",
+    element: <Marketplace />,
+    protected: false,
+  }
 ];
 
 const computeRoutes = (routes) => {

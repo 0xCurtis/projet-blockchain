@@ -11,6 +11,7 @@ from backend.services.mongodb_service import (
     update_nft_ownership,
     get_active_offers_for_nft,
     get_all_active_offers,
+    get_metadata_with_image_by_id
 )
 from backend.services.xrpl_service import (
     create_nft_sell_offer_template,
@@ -35,8 +36,9 @@ def get_active_offers() -> Tuple[Response, int]:
         
         # Enrich each offer with metadata
         for offer in offers:
-            if 'metadata_hash' in offer:
-                metadata = get_metadata_by_hash(offer['metadata_hash'])
+            print(offer)
+            if 'nft_id' in offer:
+                metadata = get_metadata_with_image_by_id(offer['nft_id'])
                 if metadata:
                     offer['metadata'] = metadata
         

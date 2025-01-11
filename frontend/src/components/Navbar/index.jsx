@@ -18,6 +18,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <a href="/" className="mr-4">Mint</a>
           <a href="/list" className="mr-4">List</a>
+          <a href="/marketplace" className="mr-4">Marketplace</a>
 
           {isConnected && <button
             onClick={handleDisconnect}
