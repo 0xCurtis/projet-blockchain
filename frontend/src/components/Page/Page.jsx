@@ -1,4 +1,4 @@
-import Navbar from "./nav";
+import Navbar from "../Navbar/index.jsx";
 
 export default function Page({ children }) {
   return (

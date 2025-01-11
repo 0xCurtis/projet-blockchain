@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/prop-types
-const MintNFTForm = ({metadata, setMetadata, handleMintRWANFT, handleMintNFT, qrCodeMint,}) => (
+export const MintNFTForm = ({metadata, setMetadata, handleMintRWANFT, handleMintNFT, qrCodeMint,}) => (
   <div className="mt-8">
     <h2 className="text-2xl font-semibold text-gray-800 mb-6">Mint NFT</h2>
     <div className="space-y-4">
@@ -63,5 +63,3 @@ const MintNFTForm = ({metadata, setMetadata, handleMintRWANFT, handleMintNFT, qr
     )}
   </div>
 );
-
-export default MintNFTForm;

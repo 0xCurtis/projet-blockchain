@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/prop-types
-const ConnectWallet = ({ isConnected, connectWithXUMM, qrCode, uuid }) => (
+export const ConnectWallet = ({ isConnected, connectWithXUMM, qrCode, uuid }) => (
   <>
     {!isConnected ? (
       <div>
@@ -37,5 +37,3 @@ const ConnectWallet = ({ isConnected, connectWithXUMM, qrCode, uuid }) => (
     )}
   </>
 );
-
-export default ConnectWallet;

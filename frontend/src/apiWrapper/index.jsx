@@ -10,7 +10,7 @@ export const AxiosInstance = axios.create({
 });
 
 function handleApiError(e) {
-  const errorMessage = e?.response?.data?.data || "An unexpected error occurred. Please try again.";
+  const errorMessage = e?.response?.data?.data || "An unexpected Error occurred. Please try again.";
   toast.error(errorMessage);
   throw e;
 }

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ConnectWallet from '~/components/ConnectWallet.jsx';
-import MintNFTForm from '~/components/MintNFTForm.jsx';
-import QRCodeDisplay from '~/components/QRCodeDisplay.jsx';
+import {ConnectWallet} from '~/components/ConnectWallet/index.jsx';
+import {MintNFTForm} from '~/components/MintNFTForm/index.jsx';
+import {QRCodeDisplay} from '~/components/QRCodeDisplay/index.jsx';
 import { API_KEY, API_SECRET } from "~/constants/index.jsx";
 import Api from "~/apiWrapper/index.jsx";
 import { useAddress } from "~/contexts/address/index.jsx";
